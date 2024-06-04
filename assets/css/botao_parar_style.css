@@ -1,0 +1,16 @@
+#botaoParar {
+  border: 1px solid #d62828;
+  background-color: transparent;
+  padding: 0 2vw;
+  height: 3vh;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1vw;
+  color: #d62828;
+  cursor: pointer;
+}
+#container_botao_parar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
