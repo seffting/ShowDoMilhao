@@ -400,14 +400,6 @@ let perguntas = [
     resposta: 1
   },
   {
-    pergunta: "Qual é o coletivo de cães?",
-    escolha1: "Matilha",
-    escolha2: "Rebanho",
-    escolha3: "Cardume",
-    escolha4: "Manada",
-    resposta: 1
-  },
-  {
     pergunta: "A personagem Charlot foi criado por...",
     escolha1: "Carlos Gardel",
     escolha2: "Charlotte Brontë",
@@ -424,14 +416,6 @@ let perguntas = [
     resposta: 3
   },
   {
-    pergunta: "Qual é o coletivo de cães?",
-    escolha1: "Matilha",
-    escolha2: "Rebanho",
-    escolha3: "Cardume",
-    escolha4: "Manada",
-    resposta: 1
-  },
-  {
     pergunta: "A obra literária 'OS Sertões' de Euclides da Cunha está dividida em três partes. Quais são elas?",
     escolha1: "A terra; O homem; A luta",
     escolha2: "A terra; A luta; A guerra",
@@ -446,14 +430,6 @@ let perguntas = [
     escolha3: "Mancha",
     escolha4: "Gibraltar",
     resposta: 2
-  },
-  {
-    pergunta: "Qual é o coletivo de cães?",
-    escolha1: "Matilha",
-    escolha2: "Rebanho",
-    escolha3: "Cardume",
-    escolha4: "Manada",
-    resposta: 1
   },
   {
     pergunta: "Quem é o autor de '1984'?",
