@@ -1,0 +1,274 @@
+*{
+    margin: 0;
+}
+
+@font-face {
+    font-family: "Roboto", sans-serif;
+    src: url('assets/font/Roboto')
+}
+
+
+.corFundoPrincipal{
+    background-color: #003642;
+}
+
+.corFundoPerguntas{
+    background-color: #211b15;
+}
+
+.corFundoPontuacao{
+    background-color: black;
+}
+
+#containerPrincipal{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    color: white;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+}
+
+/* -------------------------PONTUAÇÃO------------------------- */
+
+#containerPontuacao{
+    height: 100%;
+    width: 15%;
+    color: lightgray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 90%;
+}
+
+#containerPontuacao > div{
+    height: 80%;
+    width: 70%;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.containerNivel{
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.circulo{
+    height: 20px;
+    width: 20px;
+    border: 1px solid white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.iconeCifrao{
+    font-size: 12px;
+}
+
+.textoPontuacao{
+    font-size: 18px;
+}
+
+/* -------------------------PERGUNTAS E AJUDA------------------------- */
+
+#containerDireita{
+    width: 85%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#containerMeio{
+    height: 65%;
+    width: 70%;
+    display: flex;
+}
+
+#containerPerguntasEValores{
+    width: 60%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-direction: column;
+}
+
+#containerPerguntas{
+    height: 75%;
+    width: 90%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    opacity: 90%;
+}
+
+#containerValores{
+    height: 20%;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#errar, #parar, #acertar{
+    height: 70%;
+    width: 25%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    color: #cb9f2f;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#errar > div, #parar > div, #acertar > div{
+    width: 150%;
+    height: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#botaoParar{
+    height: 25px;
+    width: 130px;
+    background-color: transparent;
+    border-radius: 5px;
+    border: 2px solid #cb9f2f;
+    font-size: 20px;
+    font-weight: bold;
+    color: #cb9f2f;
+}
+
+#pergunta{
+    height: 30%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#textoPergunta{
+    font-weight: 500 !important;
+    font-size: 24px;
+    letter-spacing: 2px;
+}
+
+.resposta{
+    height: 15%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.numeroResposta{
+    height: 100%;
+    width: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.resposta:hover{
+    border: 1px solid lightblue;
+}
+
+#containerAjudasEImagem{
+    height: 80%;
+    width: 40%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#containerImagem{
+    height: 70%;
+    width: 70%;
+    background-image: url("./assets/imgs/silvio.png");
+    background-size: cover;
+    background-position: center;
+    margin-right: 15px;
+    margin-top: -40px;
+}
+
+#containerAjudas{
+    height: 33%;
+    width: 55%;
+}
+
+#ajudas, #pulos{
+    height: 50%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.botaoAjudas{
+    height: 95%;
+    width: 30%;
+    color: #fefae0;
+    border: none;
+}
+
+.botaoAjudas:hover{
+    border: 1px solid lightblue;
+}
+
+#botaoAjuda1{
+    background-color: #5838b3;
+    background-image: url("assets/imgs/ace.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50px;
+}
+
+#botaoAjuda2{
+    background-color: #009e9e;
+    background-image: url("assets/imgs/block.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50px;
+}
+
+#botaoAjuda3{
+    background-color: #a8bf21;
+    background-image: url("assets/imgs/group.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 55px;
+}
+
+.botaoPulo{
+    background-image: url("assets/imgs/proximo.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#botaoPulo1{
+    background-color: #f9b503;
+}
+
+#botaoPulo2{
+    background-color: #d94632;
+}
+
+#botaoPulo3{
+    background-color: #b31b42;
+}
