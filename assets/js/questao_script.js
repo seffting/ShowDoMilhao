@@ -35,14 +35,14 @@ function carregaQuestao () { // Pega uma questão da lista
     } while (!valido(nrPerguntaAtual))
     nrsPerguntasUsadas.push(nrPerguntaAtual);
     let pergunta = perguntas[nrPerguntaAtual];
-    console.log(nrsPerguntasUsadas);
+    // console.log(nrsPerguntasUsadas);
 
     return pergunta;
 }
 
 function confereResposta(){  // Validação de conferir a resposta.
     let acertou = pergunta["resposta"] == this.id;
-    //console.log(acertou);
+    // console.log(acertou);
     return acertou;
 }
 
