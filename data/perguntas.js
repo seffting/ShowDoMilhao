@@ -4,7 +4,7 @@ let perguntas = [
     escolha1: "O caçador",
     escolha2: "O Príncipe Encantado",
     escolha3: "A sua madrinha",
-    escolha4: " O anão",
+    escolha4: "O anão",
     resposta: 2
   },
   {
@@ -12,7 +12,7 @@ let perguntas = [
     escolha1: "Matilha",
     escolha2: "Rebanho",
     escolha3: "Cardume",
-    escolha4: " Manada",
+    escolha4: "Manada",
     resposta: 1
   },
   {
@@ -20,7 +20,7 @@ let perguntas = [
     escolha1: "Nordeste",
     escolha2: "Norte",
     escolha3: "Sudeste",
-    escolha4: " Centro-Oeste",
+    escolha4: "Centro-Oeste",
     resposta: 1
   },
   {
@@ -28,7 +28,7 @@ let perguntas = [
     escolha1: "Europa",
     escolha2: "África",
     escolha3: "América",
-    escolha4: " Ásia",
+    escolha4: "Ásia",
     resposta: 2
   },
   {
@@ -36,7 +36,7 @@ let perguntas = [
     escolha1: "Sansão e Dalila",
     escolha2: "José e Maria",
     escolha3: "Sara e Abraão",
-    escolha4: " Adão e Eva",
+    escolha4: "Adão e Eva",
     resposta: 4
   },
   {
@@ -44,7 +44,7 @@ let perguntas = [
     escolha1: "Cavalo",
     escolha2: "Cão",
     escolha3: "Gato",
-    escolha4: " Sapo",
+    escolha4: "Sapo",
     resposta: 4
   },
   {
@@ -52,7 +52,7 @@ let perguntas = [
     escolha1: "Vereador",
     escolha2: "Vice-presidente",
     escolha3: "Senador",
-    escolha4: " Deputado",
+    escolha4: "Deputado",
     resposta: 2
   },
   {
@@ -60,15 +60,15 @@ let perguntas = [
     escolha1: "Cavalo",
     escolha2: "Burro",
     escolha3: "Cachorro",
-    escolha4: " Raposa",
+    escolha4: "Raposa",
     resposta: 3
   },
   {
     pergunta: "Qual o número mínimo que um mês pode ter?",
     escolha1: "28",
     escolha2: "29",
-    escolha3: "30 ",
-    escolha4: " 31",
+    escolha3: "30",
+    escolha4: "31",
     resposta: 1
   },
   {
@@ -76,7 +76,7 @@ let perguntas = [
     escolha1: "Salmora",
     escolha2: "Gangorra",
     escolha3: "Melado",
-    escolha4: " Bolacha",
+    escolha4: "Bolacha",
     resposta: 1
   },
   {
@@ -84,7 +84,7 @@ let perguntas = [
     escolha1: "Das rochas",
     escolha2: "Das flores",
     escolha3: "Da água",
-    escolha4: " Da terra",
+    escolha4: "Da terra",
     resposta: 2
   },
   {
@@ -92,7 +92,7 @@ let perguntas = [
     escolha1: "Jerry",
     escolha2: "Pernalonga",
     escolha3: "Frajola",
-    escolha4: " Mickey Mouse",
+    escolha4: "Mickey Mouse",
     resposta: 4
   },
   {
@@ -100,7 +100,7 @@ let perguntas = [
     escolha1: "Cometas",
     escolha2: "Lua",
     escolha3: "Sol",
-    escolha4: " Som",
+    escolha4: "Som",
     resposta: 4
   },
   {
@@ -108,7 +108,7 @@ let perguntas = [
     escolha1: "Bota",
     escolha2: "Lâmina",
     escolha3: "Travão",
-    escolha4: " Rodas",
+    escolha4: "Rodas",
     resposta: 2
   },
   {
@@ -116,7 +116,7 @@ let perguntas = [
     escolha1: "Castanhos",
     escolha2: "Amarelos",
     escolha3: "Pretos",
-    escolha4: " Vermelhos",
+    escolha4: "Vermelhos",
     resposta: 4
   },
   {
@@ -124,7 +124,7 @@ let perguntas = [
     escolha1: "Tocantins",
     escolha2: "Acre",
     escolha3: "Rondônia",
-    escolha4: " Mato Grosso do Sul",
+    escolha4: "Mato Grosso do Sul",
     resposta: 1
   },
   {
@@ -132,7 +132,7 @@ let perguntas = [
     escolha1: "Brasil",
     escolha2: "Espanha",
     escolha3: "Portugal",
-    escolha4: " Argentina",
+    escolha4: "Argentina",
     resposta: 3
   },
   {
@@ -140,7 +140,7 @@ let perguntas = [
     escolha1: "Carlos Gomes",
     escolha2: "Olavo Billac",
     escolha3: "José de Alencar",
-    escolha4: " Machado de Assis",
+    escolha4: "Machado de Assis",
     resposta: 3
   },
   {
@@ -148,7 +148,7 @@ let perguntas = [
     escolha1: "Romeu",
     escolha2: "Tristão",
     escolha3: "Rigoleto",
-    escolha4: " Hamlet",
+    escolha4: "Hamlet",
     resposta: 2
   },
   {
@@ -156,7 +156,7 @@ let perguntas = [
     escolha1: "Generais",
     escolha2: "Faraós",
     escolha3: "Sheiks",
-    escolha4: " Presidentes",
+    escolha4: "Presidentes",
     resposta: 2
   },
   {
@@ -164,7 +164,7 @@ let perguntas = [
     escolha1: "Patinhas",
     escolha2: "Zé Carioca",
     escolha3: "Gastão",
-    escolha4: " Peninha",
+    escolha4: "Peninha",
     resposta: 4
   },
   {
@@ -172,7 +172,7 @@ let perguntas = [
     escolha1: "Família Adams",
     escolha2: "Os Finstones",
     escolha3: "Denis o Pimentinha",
-    escolha4: " Os Simpsons",
+    escolha4: "Os Simpsons",
     resposta: 4
   },
   {
@@ -180,7 +180,7 @@ let perguntas = [
     escolha1: "Graciliano Ramos",
     escolha2: "Érico Veríssimo",
     escolha3: "Jorge Amado",
-    escolha4: " Machado de Assis",
+    escolha4: "Machado de Assis",
     resposta: 3
   },
   {
@@ -188,7 +188,7 @@ let perguntas = [
     escolha1: "Hércules",
     escolha2: "D. Pedro I",
     escolha3: "Dunga",
-    escolha4: " Ali Babá",
+    escolha4: "Ali Babá",
     resposta: 4
   },
   {
@@ -196,7 +196,7 @@ let perguntas = [
     escolha1: "Artistas de rock",
     escolha2: "Filmes de cinema",
     escolha3: "Artistas de teatro",
-    escolha4: " Marcas de cigarro",
+    escolha4: "Marcas de cigarro",
     resposta: 2
   },
   {
@@ -204,7 +204,7 @@ let perguntas = [
     escolha1: "Rena",
     escolha2: "Touro",
     escolha3: "Jumento",
-    escolha4: " Cavalo",
+    escolha4: "Cavalo",
     resposta: 1
   },
   {
@@ -268,7 +268,7 @@ let perguntas = [
     escolha1: "Japonesa",
     escolha2: "Russa",
     escolha3: "Chinesa",
-    escolha4: " Norte-americana",
+    escolha4: "Norte-americana",
     resposta: 4
   },
   {
@@ -276,7 +276,7 @@ let perguntas = [
     escolha1: "Urubu",
     escolha2: "Morcego",
     escolha3: "Pato",
-    escolha4: " Andorinha",
+    escolha4: "Andorinha",
     resposta: 2
   },
   {
@@ -284,7 +284,7 @@ let perguntas = [
     escolha1: "Guidão",
     escolha2: "Air Bag",
     escolha3: "Corrente",
-    escolha4: " Selim",
+    escolha4: "Selim",
     resposta: 2
   },
   {
@@ -324,7 +324,7 @@ let perguntas = [
     escolha1: "Vermelha e Amarela",
     escolha2: "Azul e Branca",
     escolha3: "Branca e Preta",
-    escolha4: " Vermelha e Branca",
+    escolha4: "Vermelha e Branca",
     resposta: 4
   },
   {
@@ -332,7 +332,7 @@ let perguntas = [
     escolha1: "Cruella de Vil",
     escolha2: "Drissela",
     escolha3: "Eleanor",
-    escolha4: " Anastacia",
+    escolha4: "Anastacia",
     resposta: 1
   },
   {
@@ -340,7 +340,7 @@ let perguntas = [
     escolha1: "Mila Kunis",
     escolha2: "Jennifer Lawrence",
     escolha3: "Natalie Portman",
-    escolha4: " Anne Hathaway",
+    escolha4: "Anne Hathaway",
     resposta: 3
   },
   {
@@ -348,7 +348,7 @@ let perguntas = [
     escolha1: "Rei Arthur",
     escolha2: "Robin Hood",
     escolha3: "Zorro",
-    escolha4: " D' Artagnan",
+    escolha4: "D' Artagnan",
     resposta: 1
   },
   {
@@ -356,7 +356,7 @@ let perguntas = [
     escolha1: "Brasil",
     escolha2: "Nova Zelândia",
     escolha3: "Colômbia",
-    escolha4: " Bolívia",
+    escolha4: "Bolívia",
     resposta: 2
   },
   {
@@ -364,7 +364,7 @@ let perguntas = [
     escolha1: "Avião bala",
     escolha2: "Supersônico",
     escolha3: "Sônico",
-    escolha4: " Ultrasônico",
+    escolha4: "Ultrasônico",
     resposta: 2
   },
   {
@@ -372,7 +372,7 @@ let perguntas = [
     escolha1: "Milo Manara",
     escolha2: "Maurício de Sousa",
     escolha3: "Quino",
-    escolha4: " Bill Watterson",
+    escolha4: "Bill Watterson",
     resposta: 3
   },
   {
@@ -380,7 +380,7 @@ let perguntas = [
     escolha1: "Palácio Argentino",
     escolha2: "Casa Rosada",
     escolha3: "Casa Hermosa",
-    escolha4: " Palácio Dom Diego",
+    escolha4: "Palácio Dom Diego",
     resposta: 2
   },
   {
@@ -388,7 +388,7 @@ let perguntas = [
     escolha1: "2115",
     escolha2: "2016",
     escolha3: "2076",
-    escolha4: " 2070",
+    escolha4: "2070",
     resposta: 2
   },
   {
@@ -396,7 +396,7 @@ let perguntas = [
     escolha1: "Homem",
     escolha2: "Girafas",
     escolha3: "Porcos",
-    escolha4: " Cão",
+    escolha4: "Cão",
     resposta: 1
   },
   {
@@ -404,7 +404,7 @@ let perguntas = [
     escolha1: "Matilha",
     escolha2: "Rebanho",
     escolha3: "Cardume",
-    escolha4: " Manada",
+    escolha4: "Manada",
     resposta: 1
   },
   {
@@ -412,7 +412,7 @@ let perguntas = [
     escolha1: "Carlos Gardel",
     escolha2: "Charlotte Brontë",
     escolha3: "Charlie Chaplin",
-    escolha4: " Charles Aznavour",
+    escolha4: "Charles Aznavour",
     resposta: 3
   },
   {
@@ -420,7 +420,7 @@ let perguntas = [
     escolha1: "Eliott Ness",
     escolha2: "ALexander Burr",
     escolha3: "Lee Harvey Oswald",
-    escolha4: " Billy The Kid",
+    escolha4: "Billy The Kid",
     resposta: 3
   },
   {
@@ -428,7 +428,7 @@ let perguntas = [
     escolha1: "Matilha",
     escolha2: "Rebanho",
     escolha3: "Cardume",
-    escolha4: " Manada",
+    escolha4: "Manada",
     resposta: 1
   },
   {
@@ -436,7 +436,7 @@ let perguntas = [
     escolha1: "A terra; O homem; A luta",
     escolha2: "A terra; A luta; A guerra",
     escolha3: "A luta; A terra; O sol",
-    escolha4: " A terra; A seca; A lua",
+    escolha4: "A terra; A seca; A lua",
     resposta: 1
   },
   {
@@ -444,7 +444,7 @@ let perguntas = [
     escolha1: "Panamá",
     escolha2: "Suez",
     escolha3: "Mancha",
-    escolha4: " Gibraltar",
+    escolha4: "Gibraltar",
     resposta: 2
   },
   {
@@ -452,7 +452,7 @@ let perguntas = [
     escolha1: "Matilha",
     escolha2: "Rebanho",
     escolha3: "Cardume",
-    escolha4: " Manada",
+    escolha4: "Manada",
     resposta: 1
   },
   {
@@ -681,3 +681,5 @@ let perguntas = [
     }
 
 ];
+
+export { perguntas }
