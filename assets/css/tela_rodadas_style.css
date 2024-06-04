@@ -195,7 +195,7 @@
 #containerImagem{
     height: 70%;
     width: 70%;
-    background-image: url("./assets/imgs/silvio.png");
+    background-image: url("./assets/img/silvio.png");
     background-size: cover;
     background-position: center;
     margin-right: 15px;
@@ -228,7 +228,7 @@
 
 #botaoAjuda1{
     background-color: #5838b3;
-    background-image: url("assets/imgs/ace.png");
+    background-image: url("assets/img/ace.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: 50px;
@@ -236,7 +236,7 @@
 
 #botaoAjuda2{
     background-color: #009e9e;
-    background-image: url("assets/imgs/block.png");
+    background-image: url("assets/img/block.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: 50px;
@@ -244,14 +244,14 @@
 
 #botaoAjuda3{
     background-color: #a8bf21;
-    background-image: url("assets/imgs/group.png");
+    background-image: url("assets/img/group.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: 55px;
 }
 
 .botaoPulo{
-    background-image: url("assets/imgs/proximo.png");
+    background-image: url("assets/img/proximo.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: 40px;
