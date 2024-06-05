@@ -4,16 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rodadas</title>
-    <link rel="stylesheet" href="assets/css/tela_rodadas_style.css">
+    <link rel="stylesheet" href="../assets/css/tela_rodadas_style.css">
 
 </head>
 <body>
-    <div id="containerPrincipal" class="corFundoPrincipal">
 
-        <div id="containerPontuacao" class="corFundoPontuacao">
+    <!-- -----------REMOVER PLACEHOLDERS----------- -->
+
+    <section class="corFundoPrincipal">
+
+            <!-- -----------PONTUAÇÃO----------- -->
+        <div id="containerPontuacao" class="corFundoPontuacao displayCenter">
             <div>
                 <div class="containerNivel">
-                    <div class="circulo">
+                    <div class="circulo displayCenter">
                         <span class="iconeCifrao">R$</span>
                     </div>
                     <span class="textoPontuacao">1 MIL</span>
@@ -110,55 +114,57 @@
                 </div>
             </div>        
         </div>
-        <div id="containerDireita">
+        <div id="containerDireita" class="displayCenter">
             <div id="containerMeio">
+                    <!-- -----------PERGUNTAS----------- -->
                 <div id="containerPerguntasEValores">
                     <div id="containerPerguntas">
-                        <div id="pergunta" class="corFundoPerguntas">
+                        <div id="pergunta" class="corFundoPerguntas displayCenter">
                             <h3 id="textoPergunta">Na saga Crepúsculo, Edward Cullen é?</h3> 
                         </div>
                         <div class="resposta corFundoPerguntas">
-                            <div class="numeroResposta">
+                            <div class="numeroResposta displayCenter">
                                 1
                             </div>
                             <p class="textoResposta">Resposta 1</p>
                         </div >
                         <div class="resposta corFundoPerguntas">
-                            <div class="numeroResposta">
+                            <div class="numeroResposta displayCenter">
                                 2
                             </div>
                             <p class="textoResposta">Resposta 2</p>
                         </div>
                         <div  class="resposta corFundoPerguntas">
-                            <div class="numeroResposta">
+                            <div class="numeroResposta displayCenter">
                                 3
                             </div>
                             <p class="textoResposta">Resposta 3</p>
                         </div>
                         <div class="resposta corFundoPerguntas">
-                            <div class="numeroResposta">
+                            <div class="numeroResposta displayCenter">
                                 4
                             </div>
                             <p class="textoResposta">Resposta 4</p>
                         </div>
                       
                     </div>
-                    <div id="containerValores">
-                        <div id="errar">
+                        <!-- -----------VALORES / PREMIOS----------- -->
+                    <div id="containerValores" class="corFontValores">
+                        <div id="errar" class="displayCenter">
                             <div>
                                 <span>R$</span>
                                 <span>0</span>
                             </div>
                             <span>ERRAR</span>
                         </div>
-                        <div id="parar">
+                        <div id="parar" class="displayCenter">
                             <div>
                                 <span>R$</span>
                                 <span>500 MIL</span>
                             </div>
-                            <button id="botaoParar">PARAR</button>
+                            <button id="botaoParar" >PARAR</button>
                         </div>
-                        <div id="acertar">
+                        <div id="acertar" class="displayCenter">
                             <div>
                                 <span>R$</span>
                                 <span>1 MIL</span>
@@ -168,9 +174,11 @@
                     </div>
                 </div>
                 <div id="containerAjudasEImagem">
+                        <!-- -----------IMAGEM SILVIO----------- -->
                     <div id="containerImagem">
 
                     </div>
+                        <!-- -----------AJUDAS / DICAS E PULOS----------- -->
                     <div id="containerAjudas">
                         <div id="ajudas">   
                             <button id="botaoAjuda1" class="botaoAjudas"></button>
@@ -187,8 +195,9 @@
             </div>
         </div>
 
-    </div>
-    <div id="container2"></div>
-    <script src="tela_rodadas_script.js"></script>
+    </section>
+
+    <script src="../assets/js/pontuacao_script.js"></script>
+
 </body>
 </html>
