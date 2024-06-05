@@ -1,16 +1,36 @@
 <!DOCTYPE html>
-<html lang="ptBr">
-  
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rodadas</title>
-    <script src="../assets/js/principal-script.js" type="module" async></script>
-    <link rel="stylesheet" href="../assets/css/tela_rodadas_style.css">
+<html lang="pt-br">
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/assets/css/menu_style.css">
+  <link rel="stylesheet" href="/assets/css/tela_rodadas_style.css">
+  <link rel="stylesheet" href="/assets/css/dicas_estilo.css">
+
+  <link rel="shortcut icon" href="/assets/img/favicon.png" type="image/x-icon">
+  <script src="../assets/js/principal-script.js" type="module" async></script>
+  <title>SHOW DO MILHÃO</title>
 </head>
 
 <body>
+  <main>
+    <div id="containerConteudo">
+      <img src="/assets/img/logo.png" alt="Logo Show Do Milhão" id="logoShowDoMilhao">
+      <div id="containerMenu">
+        <div>
+          <button id="botaoJogar" class="botaoMenu">Jogar</button>
+        </div>
+        <div>
+          <button id="botaoHistorico" class="botaoMenu">Histórico</button>
+        </div>
+        <div>
+          <button id="botaoEstatisticas" class="botaoMenu">Estatísticas</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
 
   <!-- -----------REMOVER PLACEHOLDERS----------- -->
 
@@ -129,25 +149,25 @@
               <div class="numeroResposta displayCenter">
                 1
               </div>
-              <p class="textoResposta" id="resposta0">Resposta 1</p>
+              <p class="textoResposta" id="0">Resposta 1</p>
             </div>
             <div class="resposta corFundoPerguntas">
               <div class="numeroResposta displayCenter">
                 2
               </div>
-              <p class="textoResposta" id="resposta1">Resposta 2</p>
+              <p class="textoResposta" id="1">Resposta 2</p>
             </div>
             <div class="resposta corFundoPerguntas">
               <div class="numeroResposta displayCenter">
                 3
               </div>
-              <p class="textoResposta" id="resposta2">Resposta 3</p>
+              <p class="textoResposta" id="2">Resposta 3</p>
             </div>
             <div class="resposta corFundoPerguntas">
               <div class="numeroResposta displayCenter">
                 4
               </div>
-              <p class="textoResposta" id="resposta3">Resposta 4</p>
+              <p class="textoResposta" id="3">Resposta 4</p>
             </div>
 
           </div>
@@ -197,10 +217,91 @@
         </div>
       </div>
     </div>
-
   </section>
 
-  <!-- <script src="../assets/js/pontuacao_script.js"></script> -->
-</body>
+  <!-- Dicas -->
+  <section id="mostrarDicaCartas">
+    <section id="dicas">
+      <div class="container-cartas-exterior">
+        <div class="container-titulo">
+          <div>
+            <h3>Ajuda Cartas</h3>
+          </div>
+        </div>
+        <div class="container-cartas">
+          <div id="cartas">
+          </div>
+        </div>
+        <div class="button">
+          <button id="buttonFecharCartas">VOLTAR</button>
+        </div>
+      </div>
+    </section>
+  </section>
 
+  <section id="mostrarDicaConvidados">
+    <section id="dicas">
+      <div class="container-convidados-exterior">
+        <div class="container-titulo">
+          <div>
+            <h3>Ajuda Convidados</h3>
+          </div>
+        </div>
+        <div>
+          <div class="container-convidados">
+            <div id="convidados">
+              <div>
+                <img src="/assets/img/usuario1.svg" alt="">
+              </div>
+              <div>
+                <img src="/assets/img/usuario2.png" alt="">
+              </div>
+              <div>
+                <img src="/assets/img/usuario3.png" alt="">
+              </div>
+            </div>
+            <section id="barras">
+
+              <div class="card">
+                <span id="voto0" class="resposta"></span>
+                <div class="progress" id="progresso0">
+                  <div class="progress-bar">
+                    <span id="porcentagem0"></span>
+                    <div class="progress"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <span id="voto1" class="resposta"></span>
+                <div class="progress" id="progresso1">
+                  <div class="progress-bar">
+                    <span id="porcentagem1"></span>
+                    <div class="progress"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <span id="voto2" class="resposta"></span>
+                <div class="progress" id="progresso2">
+                  <div class="progress-bar">
+                    <span id="porcentagem2"></span>
+                    <div class="progress"></div>
+                  </div>
+                </div>
+              </div>
+
+            </section>
+          </div>
+        </div>
+
+        <div class="button">
+          <button id="buttonFecharConvidados">VOLTAR</button>
+        </div>
+      </div>
+    </section>
+  </section>
+
+</body>
 </html>
