@@ -4,6 +4,7 @@ const chanceMax = 90;
 const chanceMin = 60;
 const respostaCerta = 1; // PLACEHOLDER
 
+ajudaConvidados()
 function ajudaConvidados() {
     // calcular quanto cada rodada influencia na chance
     const variacaoChance = (chanceMax - chanceMin) / (rodadaFinal - 1);
@@ -39,38 +40,34 @@ function chuteConvidado(chanceAtual) {
 
 function calcularCerteza(chanceAtual, respostaCerta) {
     // sorteia um indice para saber se o convidado tem certeza, duvida ou não sabe
-    const indiceCerteza = Math.floor((Math.random() * 100) + 1) * (chanceAtual / 100);
+    const indiceCerteza = Math.floor((Math.random() * 100) + 1);
+    const certezaAlta = chanceAtual;
+    const certezaMedia = (100 - certezaAlta)/2 + certezaAlta;
     let porcentagemCerteza;
 
     /*
-        Caso o convidado tenha falado a resposta correta:
-        80% de chance de ele ter alta certeza
-        10% de chance de ele ter dúvida
-        10% de chance de ele não saber (chutou)
+        As faixas de certeza são
+        0 - Chance Atual
+        Chance Atual - (Metade da distância restante até 100, divido por 2)
+        (Metade da distância restante até 100, divido por 2) - 100
     */
     if (respostaCerta) {
-        if (indiceCerteza > 20) { // tem certeza
+        if (certezaAlta >= indiceCerteza) { // tem certeza
             porcentagemCerteza = Math.floor(Math.random() * 21) + 80;
-        } else if (indiceCerteza > 10) { // duvida
+        } else if (certezaMedia >= indiceCerteza) { // duvida
             porcentagemCerteza = Math.floor(Math.random() * 61) + 20;
         } else { // não sabe
             porcentagemCerteza = Math.floor(Math.random() * 21);
         }
     }
-    
-    /*
-        Caso o convidado tenha falado a resposta incorreta:
-        40% de chance de ele ter alta certeza
-        35% de chance de ele ter dúvida
-        25% de chance de ele não saber (chutou)
-    */
+    // Caso a resposta seja incorreta, a chance de ter certeza é menor
     else {
-        if (indiceCerteza > 60) {
-            porcentagemCerteza = Math.floor(Math.random() * 21);
-        } else if (indiceCerteza > 25) {
-            porcentagemCerteza = Math.floor(Math.random() * 61) + 20;
+        if (certezaAlta >= indiceCerteza) {
+            porcentagemCerteza = Math.floor(Math.random() * 21); // não sabe
+        } else if (certezaMedia >= indiceCerteza) {
+            porcentagemCerteza = Math.floor(Math.random() * 61) + 20; // duvida
         } else {
-            porcentagemCerteza = Math.floor(Math.random() * 21) + 80;
+            porcentagemCerteza = Math.floor(Math.random() * 21) + 80; // tem certeza
         }
     }
 
