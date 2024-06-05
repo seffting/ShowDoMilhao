@@ -1,12 +1,9 @@
-*{
-    margin: 0;
-}
+/* --------FONTS / REUTILIZAVEIS-------- */
 
 @font-face {
     font-family: "Roboto", sans-serif;
-    src: url('assets/font/Roboto')
+    src: url('../fonts/Roboto/')
 }
-
 
 .corFundoPrincipal{
     background-color: #003642;
@@ -20,24 +17,37 @@
     background-color: black;
 }
 
-#containerPrincipal{
-    height: 100vh;
-    width: 100vw;
+.displayCenter{
     display: flex;
-    color: white;
+    justify-content: center;
+    align-items: center;
+}
+
+/* --------ESTILOS GERAIS DA TELA-------- */
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body {
     font-family: "Roboto", sans-serif;
+    color: white;
     font-weight: 500;
 }
 
-/* -------------------------PONTUAÇÃO------------------------- */
+section{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+}
+
+/* --------PONTUAÇÃO / NIVEIS-------- */
 
 #containerPontuacao{
     height: 100%;
     width: 15%;
     color: lightgray;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     opacity: 90%;
 }
 
@@ -62,9 +72,6 @@
     width: 20px;
     border: 1px solid white;
     border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .iconeCifrao{
@@ -75,14 +82,11 @@
     font-size: 18px;
 }
 
-/* -------------------------PERGUNTAS E AJUDA------------------------- */
+/* --------DIVS DIREITA E CENTRALIZAÇÃO DO CONTEUDO------- */
 
 #containerDireita{
     width: 85%;
     height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 #containerMeio{
@@ -90,6 +94,8 @@
     width: 70%;
     display: flex;
 }
+
+/* --------PERGUNTAS E RESPOSTAS-------- */
 
 #containerPerguntasEValores{
     width: 60%;
@@ -109,6 +115,38 @@
     opacity: 90%;
 }
 
+#pergunta{
+    height: 30%;
+    width: 100%;
+}
+
+#textoPergunta{
+    font-weight: 500 !important;
+    font-size: 24px;
+    letter-spacing: 2px;
+}
+
+.resposta{
+    height: 15%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.resposta:hover{
+    border: 1px solid lightblue;
+}
+
+.numeroResposta{
+    height: 100%;
+    width: 10%;
+    font-size: 30px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+/* --------VALORES / PREMIOS / ACERTAR / PARAR / ERRAR-------- */
+
 #containerValores{
     height: 20%;
     width: 100%;
@@ -119,10 +157,7 @@
 #errar, #parar, #acertar{
     height: 70%;
     width: 25%;
-    display: flex;
-    align-items: center;
     flex-direction: column;
-    justify-content: center;
     color: #cb9f2f;
     font-size: 24px;
     font-weight: bold;
@@ -147,42 +182,6 @@
     color: #cb9f2f;
 }
 
-#pergunta{
-    height: 30%;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-#textoPergunta{
-    font-weight: 500 !important;
-    font-size: 24px;
-    letter-spacing: 2px;
-}
-
-.resposta{
-    height: 15%;
-    width: 100%;
-    display: flex;
-    align-items: center;
-}
-
-.numeroResposta{
-    height: 100%;
-    width: 10%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 30px;
-    font-weight: bold;
-    margin-right: 10px;
-}
-
-.resposta:hover{
-    border: 1px solid lightblue;
-}
-
 #containerAjudasEImagem{
     height: 80%;
     width: 40%;
@@ -195,12 +194,14 @@
 #containerImagem{
     height: 70%;
     width: 70%;
-    background-image: url("./assets/img/silvio.png");
+    background-image: url("../img/silvio.png");
     background-size: cover;
     background-position: center;
     margin-right: 15px;
     margin-top: -40px;
 }
+
+/* --------DIVS DOS BOTÕES DE DICAS / AJUDAS -------- */
 
 #containerAjudas{
     height: 33%;
@@ -226,39 +227,38 @@
     border: 1px solid lightblue;
 }
 
+/* --------BOTÕES DE DICAS / AJUDAS-------- */
+
 #botaoAjuda1{
     background-color: #5838b3;
-    background-image: url("assets/img/ace.png");
-    background-repeat: no-repeat;
-    background-position: center;
+    background-image: url("../img/ace.png");
     background-size: 50px;
 }
 
 #botaoAjuda2{
     background-color: #009e9e;
-    background-image: url("assets/img/block.png");
-    background-repeat: no-repeat;
-    background-position: center;
+    background-image: url("../img/block.png");
     background-size: 50px;
 }
 
 #botaoAjuda3{
     background-color: #a8bf21;
-    background-image: url("assets/img/group.png");
-    background-repeat: no-repeat;
-    background-position: center;
+    background-image: url("../img/group.png");
     background-size: 55px;
 }
 
 .botaoPulo{
-    background-image: url("assets/img/proximo.png");
-    background-repeat: no-repeat;
-    background-position: center;
+    background-image: url("../img/proximo.png");
     background-size: 40px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
+}
+
+#botaoAjuda1, #botaoAjuda2, #botaoAjuda3, .botaoPulo{
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 #botaoPulo1{
