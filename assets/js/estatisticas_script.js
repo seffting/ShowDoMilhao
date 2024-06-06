@@ -1,6 +1,35 @@
 import { historico } from "../../data/historico.js";
 
-adicionarRegistro(); // RETIRAR
+window.addEventListener('load', function() {
+    // Verifica se a página atual corresponde à página desejada
+    if (window.location.href.includes('historico.html')) {
+        // Se corresponder, execute sua função
+        adicionarRegistro();
+        popularHistorico();
+    }
+});
+
+window.addEventListener('load', function () {
+    // Verifica se a página atual corresponde à página desejada
+    if (window.location.href.includes('historico.html')) {
+        // Se corresponder, execute sua função
+        let estatisticas = contarEstatisticas();
+        let melhores = melhoresEstatisticas();
+ 
+        preencherDados(estatisticas, 0);
+        preencherDados(melhores, 8)
+    }
+});
+ 
+ 
+function preencherDados(dados, idInicial) {
+    for (let i = 0; i < dados.length; i++) {
+        const divPai = document.getElementById(i + idInicial);
+        const dado = document.createElement('div');
+        dado.innerHTML = dados[i];
+        divPai.appendChild(dado);
+    }
+}
 
 function adicionarRegistro() {
     const novoRegistro = {
@@ -15,8 +44,6 @@ function adicionarRegistro() {
 
     historico.push(novoRegistro);
 }
-
-popularHistorico(); // RETIRAR
 
 function popularHistorico() {
     historico.forEach(jogo => {
@@ -68,7 +95,7 @@ function gerarHtmlHistorico(pontuacao, data, tempo, pulos, dicas, perguntas, res
 }
 
 // PARTE DAS ESTATISTICAS ----------------------------------
-contarEstatisticas() // RETIRAR
+
 /* Retorna um vetor de 8 itens {
     0 -> total de dicas
     1 -> total de pulos
@@ -123,8 +150,6 @@ function contarEstatisticas() {
     return estatisticas;
 
 }
-
-melhoresEstatisticas(); // RETIRAR
 
 /* Retorna um vetor de 4 itens {
     0 -> partida mais longa
