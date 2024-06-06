@@ -2,13 +2,13 @@
 // -------------NECESSÁRIO PASSAR UMA VARIÁVEL "RODADA" COMO ARGUMENTO, QUE SERÁ A CONTABILIZADORA DOS NÍVEIS 1 A 16 DO JOGO.-------------
 
 let acertar, errar, parar, acertarFormatado, pararFormatado, errarFormatado;
-
+let rodada = 1
     let premios = calculaPremio(rodada)
     let premiosFormatados = formataValores(premios.acertar, premios.parar, premios.errar, rodada)
 
     // -------------PARA USAR OS VALORES RETORNADOS > premiosFormatados.acertarFormatado | premiosFormatados.pararFormatado | premiosFormatados.errarFormatado------------
 
-
+console.log(premiosFormatados.pararFormatado)
 
     // -------------FUNÇÃO QUE RETORNA OS VALORES A CADA RODADA-------------
 function calculaPremio(rodada) {

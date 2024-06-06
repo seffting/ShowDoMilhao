@@ -1,8 +1,51 @@
+/* --------RESPONSIVIDADE-------- */
+
+@media screen and (max-width: 1280px) {
+
+
+    .textoPontuacao, .textoResposta{
+        font-size: 12px !important;
+    }
+
+    .circulo{
+        height: 15px !important;
+        width: 15px !important;
+    }
+    
+    .iconeCifrao{
+        font-size: 8px !important;
+    }
+
+    #textoPergunta{
+        font-size: 16px !important;
+    }
+
+    #relogioTempoJogo{
+        font-size: 30px !important;
+    }
+
+    .numeroResposta, #errar, #parar, #acertar{
+        font-size: 20px !important;
+    }
+    
+    #botaoAjuda1, #botaoAjuda2, #botaoAjuda3, .botaoPulo{
+        background-size: 30px !important;
+        font-size: 10px;
+    }
+  }
+
+
+
 /* --------FONTS / REUTILIZAVEIS-------- */
 
 @font-face {
     font-family: "Roboto", sans-serif;
     src: url('../fonts/Roboto/')
+}
+
+@font-face {
+    font-family: relogio;
+    src: url(../fonts/DS-DIGIB.TTF);
 }
 
 .corFundoPrincipal{
@@ -72,6 +115,9 @@ section{
     width: 20px;
     border: 1px solid white;
     border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .iconeCifrao{
@@ -104,6 +150,24 @@ section{
     align-items: center;
     justify-content: flex-end;
     flex-direction: column;
+}
+
+#containerCronometro{
+    height: 10%;
+    width: 90%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#relogioTempoJogo{
+    height: 100%;
+    width: 28%;
+    font-family: relogio;
+    font-size: 40px;
+    font-weight: 900;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
 }
 
 #containerPerguntas{
@@ -155,9 +219,9 @@ section{
 
 #containerValores{
     height: 20%;
-    width: 100%;
+    width: 90%;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
 
 #errar, #parar, #acertar{
@@ -165,7 +229,7 @@ section{
     width: 25%;
     flex-direction: column;
     color: #cb9f2f;
-    font-size: 24px;
+    font-size: 26px;
     font-weight: bold;
 }
 
@@ -186,6 +250,10 @@ section{
     font-size: 20px;
     font-weight: bold;
     color: #cb9f2f;
+}
+
+#botaoParar:hover{
+    background-color: #446c74;
 }
 
 #containerAjudasEImagem{
