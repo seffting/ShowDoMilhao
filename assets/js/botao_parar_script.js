@@ -8,11 +8,12 @@ function confirmaSaida() {
     let dialogoSair = document.getElementById("dialogoSair");
     let campoTextoDialogo =  document.getElementById("textoDialogoSair");
     campoTextoDialogo.innerHTML = 
-    `<span>Se sair, irá ficar com </span>
-    <div class="circulo">
-      <span class="iconeCifrao">R$</span>
-    </div>
-    <span>${premioAtual}.\nTem certeza de que quer sair?</span>`;
+    `<div id="frase1">
+        <span>Se sair, irá ficar com 
+        <div class="circulo">
+        <span class="iconeCifrao">R$</span>
+    </div>${premioAtual}.</div>
+    <div id="frase2">\nTem certeza de que quer sair?</div></span>`;
     dialogoSair.showModal();
 }
 

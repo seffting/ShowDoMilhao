@@ -31,6 +31,7 @@ dialog {
 #tituloSair {
   font-weight: bold;
   font-size: 20px;
+  padding: 4px;
 }
 
 #textoDialogoSair {
@@ -40,19 +41,17 @@ dialog {
   margin-bottom: 10px;
 }
 
-#frase1 span {
+#frase1 {
   display: flex;
-  width: 50%;
+  width: 60%;
   height: 20px;
   justify-content: space-between;
+  align-items: center;
   flex-direction: row;
 }
 
-#frase1 span span {
-  padding: 4px 10px;
-}
-
-#frase2, #frase1 span {
+#frase1, #frase2 {
+  padding: 4px;
   font-size: 20px;
 }
 
