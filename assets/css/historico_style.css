@@ -1,0 +1,113 @@
+@font-face {
+  font-family: "Roboto", sans-serif;
+  src: url('../fonts/Roboto/')
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  color: white;
+  font-weight: 500;
+  background-color: #003642;
+  min-height: 100vh;
+}
+
+
+#containerTituloHistorico {
+  height: 20vh;
+}
+main {
+  height: 80vh;
+}
+
+#tituloHistorico{
+  font-size: 5rem;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  
+}
+
+.partida {
+  width: 60vw;
+  background-color: lightblue;
+  color: black;
+  border-radius: 10px;
+  padding: 2%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 1rem;
+}
+
+.containerPontuacaoDataTempo {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.pontuacao {
+  color: black;
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.data {
+  margin-bottom: 1rem;
+  font-weight: bold;
+  margin-right: 1rem;
+}
+
+.tempo {
+  font-weight: bold;
+}
+
+.pulos {
+  background-color: #f9b50a;
+}
+
+.dicas {
+  background-color: #a8bf21;
+}
+
+.perguntas {
+  background-color: #009e9e;
+}
+
+.resultado {
+  background-color: #cb9f2f;
+}
+
+.pulos, .dicas, .perguntas, .resultado {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 15px;
+  font-weight: bold;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  display: flex;
+}
+
+.direitaPartida {
+  width: 50%;
+}
+
+.puloPerguntaDicaResultado {
+  display: flex;
+  justify-content: space-around;
+}
+
+.valoresCaixas {
+  font-size: 2rem;
+}
