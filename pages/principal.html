@@ -4,9 +4,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="assets/css/menu_style.css">
-  <link rel="stylesheet" href="assets/css/tela_rodadas_style.css">
-  <link rel="stylesheet" href="assets/css/dicas_estilo.css">
+  <link rel="stylesheet" href="../assets/css/menu_style.css">
+  <link rel="stylesheet" href="../assets/css/tela_rodadas_style.css">
+  <link rel="stylesheet" href="../assets/css/dicas_estilo.css">
+  <link rel="stylesheet" href="../assets/css/botao_parar_style.css">
 
   <link rel="shortcut icon" href="/assets/img/favicon.png" type="image/x-icon">
   <script src="../assets/js/principal-script.js" type="module" async></script>
@@ -188,7 +189,16 @@
                 <span>R$</span>
                 <span>500 MIL</span>
               </div>
-              <button id="botaoParar">PARAR</button>
+              <div id="containerBotaoParar">
+                <button id="botaoParar">PARAR</button>
+                <dialog id="dialogoSair">
+                    <div id="textoDialogoSair">
+                      <span id="tituloSair">Sair</span>
+                    </div>
+                    <button type="button" id="botaoSim">Sim</button>
+                    <button type="button" id="botaoNao">Não</button>
+                </dialog>
+              </div>
             </div>
             <div id="acertar" class="displayCenter">
               <div>

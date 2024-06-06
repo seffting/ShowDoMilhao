@@ -1,41 +1,29 @@
-#botaoParar {
-  border: 1px solid #d62828;
-  background-color: transparent;
-  padding: 0 2vw;
-  height: 3vh;
-  border-radius: 8px;
-  font-weight: bold;
-  font-size: 1vw;
-  color: #d62828;
-  cursor: pointer;
-}
-
-#container_botao_parar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
+#containerBotaoParar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
 #dialogoSair, #dialogoSair button {
-  background-color: black;
-  border: 1px solid white;
-  color: white;
-}
-
+    background-color: black;
+    border: 1px solid white;
+    color: white;
+  }
+  
 .circulo{
-  height: 20px;
-  width: 20px;
-  border: 1px solid white;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.iconeCifrao{
-  font-size: 12px;
-}
-
+    height: 20px;
+    width: 20px;
+    border: 1px solid white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+.iconeCifraoParar {
+    font-size: 12px;
+  }
+  
 #tituloSair {
-  font-weight: bold;
+    font-weight: bold;
 }

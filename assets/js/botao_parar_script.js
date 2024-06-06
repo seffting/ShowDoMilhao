@@ -1,4 +1,3 @@
-let rodada_em_andamento = true; // variável global
 let premioAtual = 4500; // placeholder 
 
 botaoParar.addEventListener("click", confirmaSaida);
