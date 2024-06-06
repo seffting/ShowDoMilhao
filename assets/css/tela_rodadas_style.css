@@ -149,6 +149,12 @@ section{
     letter-spacing: 2px;
 }
 
+.textoResposta {
+  width: 100%;
+  height: 100%;
+  align-content: center;
+}
+
 .resposta{
     height: 15%;
     width: 100%;

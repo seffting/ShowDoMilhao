@@ -1,22 +1,29 @@
-body {
+/* body {
   margin: 0;
   color: white;
   width: 100vw;
   height: 100vh;
-  display: flex;
   justify-content: flex-end;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
+} */
 
-#mostrar-dica-cartas {
-  display: none;
+#mostrarDicaCartas {
+  display: none; /* Oculta o elemento inicialmente */
+    position: fixed; /* Define a posição fixa */
+    top: 0; /* Posiciona no topo da janela */
+    left: 0; /* Posiciona à esquerda da janela */
+    width: 100%; /* Define a largura para cobrir toda a largura da janela */
+    height: 100%; /* Define a altura para cobrir toda a altura da janela */
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente para destacar */
+    z-index: 9999; /* Valor alto para garantir que sobreponha outros elementos */
+    /* Outros estilos conforme necessário */
 }
 
 #dicas {
   background-color: rgba(0, 0, 0, 0.7);
   position: sticky;
   display: flex;
-  width: 90vw;
+  width: 100vw;
   height: 100vh;
   justify-content: center;
   align-items: center;
@@ -47,6 +54,9 @@ body {
   align-items: center;
 }
 
+#mostrarDicaConvidados {
+  display: none !important;
+}
 #convidados {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="ptBr">
-<head>
+  
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rodadas</title>
+    <script src="../assets/js/principal-script.js" type="module" async></script>
     <link rel="stylesheet" href="../assets/css/tela_rodadas_style.css">
 
 </head>
+
 <body>
 
-    <!-- -----------REMOVER PLACEHOLDERS----------- -->
+  <!-- -----------REMOVER PLACEHOLDERS----------- -->
 
-    <section class="corFundoPrincipal">
-
+  <section class="corFundoPrincipal" id="secaoTelaRodadas">
             <!-- -----------PONTUAÇÃO----------- -->
         <div id="containerPontuacao" class="corFundoPontuacao displayCenter">
             <div>
@@ -179,28 +181,57 @@
                 <div id="containerAjudasEImagem">
                         <!-- -----------IMAGEM SILVIO----------- -->
                     <div id="containerImagem">
-
-                    </div>
-                        <!-- -----------AJUDAS / DICAS E PULOS----------- -->
-                    <div id="containerAjudas">
-                        <div id="ajudas">   
-                            <button id="botaoAjuda1" class="botaoAjudas"></button>
-                            <button id="botaoAjuda2" class="botaoAjudas"></button>
-                            <button id="botaoAjuda3" class="botaoAjudas"></button>
-                        </div>
-                        <div id="pulos">
-                            <button id="botaoPulo1" class="botaoAjudas botaoPulo">PULO 1</button>
-                            <button id="botaoPulo2" class="botaoAjudas botaoPulo">PULO 2</button>
-                            <button id="botaoPulo3" class="botaoAjudas botaoPulo">PULO 3</button>
-                        </div>
-                    </div>
-                </div>
+          </div>
+          <!-- -----------VALORES / PREMIOS----------- -->
+          <div id="containerValores" class="corFontValores">
+            <div id="errar" class="displayCenter">
+              <div>
+                <span>R$</span>
+                <span>0</span>
+              </div>
+              <span>ERRAR</span>
             </div>
+            <div id="parar" class="displayCenter">
+              <div>
+                <span>R$</span>
+                <span>500 MIL</span>
+              </div>
+              <button id="botaoParar">PARAR</button>
+            </div>
+            <div id="acertar" class="displayCenter">
+              <div>
+                <span>R$</span>
+                <span>1 MIL</span>
+              </div>
+              <span>ACERTAR</span>
+            </div>
+          </div>
         </div>
+        <div id="containerAjudasEImagem">
+          <!-- -----------IMAGEM SILVIO----------- -->
+          <div id="containerImagem">
 
-    </section>
+          </div>
+          <!-- -----------AJUDAS / DICAS E PULOS----------- -->
+          <div id="containerAjudas">
+            <div id="ajudas">
+              <button id="botaoAjuda1" class="botaoAjudas"></button>
+              <button id="botaoAjuda2" class="botaoAjudas"></button>
+              <button id="botaoAjuda3" class="botaoAjudas"></button>
+            </div>
+            <div id="pulos">
+              <button id="botaoPulo1" class="botaoAjudas botaoPulo">PULO 1</button>
+              <button id="botaoPulo2" class="botaoAjudas botaoPulo">PULO 2</button>
+              <button id="botaoPulo3" class="botaoAjudas botaoPulo">PULO 3</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <script src="../assets/js/pontuacao_script.js"></script>
+  </section>
 
+  <!-- <script src="../assets/js/pontuacao_script.js"></script> -->
 </body>
+
 </html>
