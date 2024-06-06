@@ -1,3 +1,41 @@
+/* --------RESPONSIVIDADE-------- */
+
+@media screen and (max-width: 1280px) {
+
+
+    .textoPontuacao, .textoResposta{
+        font-size: 12px !important;
+    }
+
+    .circulo{
+        height: 15px !important;
+        width: 15px !important;
+    }
+    
+    .iconeCifrao{
+        font-size: 8px !important;
+    }
+
+    #textoPergunta{
+        font-size: 16px !important;
+    }
+
+    #relogioTempoJogo{
+        font-size: 30px !important;
+    }
+
+    .numeroResposta, #errar, #parar, #acertar{
+        font-size: 20px !important;
+    }
+    
+    #botaoAjuda1, #botaoAjuda2, #botaoAjuda3, .botaoPulo{
+        background-size: 30px !important;
+        font-size: 10px;
+    }
+  }
+
+
+
 /* --------FONTS / REUTILIZAVEIS-------- */
 
 @font-face {
@@ -77,6 +115,9 @@ section{
     width: 20px;
     border: 1px solid white;
     border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .iconeCifrao{
