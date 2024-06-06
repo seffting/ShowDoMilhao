@@ -174,23 +174,23 @@
           <!-- -----------VALORES / PREMIOS----------- -->
           <div id="containerValores" class="corFontValores">
             <div id="errar" class="displayCenter">
-              <div>
+              <div class="valores">
                 <span>R$</span>
-                <span>0</span>
+                <span id="valorErrar">0</span>
               </div>
               <span>ERRAR</span>
             </div>
             <div id="parar" class="displayCenter">
-              <div>
+              <div class="valores">
                 <span>R$</span>
-                <span>500 MIL</span>
+                <span id="valorParar">500 MIL</span>
               </div>
               <button id="botaoParar">PARAR</button>
             </div>
             <div id="acertar" class="displayCenter">
-              <div>
+              <div class="valores">
                 <span>R$</span>
-                <span>1 MIL</span>
+                <span id="valorAcertar">1 MIL</span>
               </div>
               <span>ACERTAR</span>
             </div>
@@ -240,15 +240,15 @@
   </section>
 
   <section id="mostrarDicaConvidados">
-    <section id="dicas">
+    <section id="dicasConvidados">
       <div class="container-convidados-exterior">
-        <div class="container-titulo">
+        <div class="containerTituloConvidados">
           <div>
             <h3>Ajuda Convidados</h3>
           </div>
         </div>
         <div>
-          <div class="container-convidados">
+          <div class="containerConvidados">
             <div id="convidados">
               <div>
                 <img src="/assets/img/usuario1.svg" alt="">
@@ -292,16 +292,19 @@
                 </div>
               </div>
 
+              <div class="buttonFecharConvidados">
+                <button id="buttonFecharConvidados">VOLTAR</button>
+              </div>
+              
             </section>
-          </div>
-        </div>
 
-        <div class="button">
-          <button id="buttonFecharConvidados">VOLTAR</button>
+          </div>
+
+
         </div>
-      </div>
     </section>
   </section>
 
 </body>
+
 </html>

@@ -43,6 +43,13 @@
   font-size: 20px;
 }
 
+.containerTituloConvidados {
+  margin-top: 130px;
+  margin-bottom: 0;                                                                                                                                                                                        ;
+  margin-left: 650px;
+  font-size: 20px;
+}
+
 #cartas {
   /* height: 100%; */
   display: grid;
@@ -54,23 +61,40 @@
   align-items: center;
 }
 
+
 #mostrarDicaConvidados {
-  display: none !important;
+  display: none;  
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    height: 100%; /* Define a altura para cobrir toda a altura da janela */
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente para destacar */
+    z-index: 9999; /* Valor alto para garantir que sobreponha outros elementos */
+    /* Outros estilos conforme necessário */
 }
-#convidados {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  margin: 20px;
-  margin-left: 70px;
-  margin-right: 70px;
-  justify-items: center;
+
+#dicasConvidados {
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+
+  justify-content: center;
   align-items: center;
 }
 
+#convidados {
+  display: grid;
+  grid-template-columns: repeat(3, 200px);
+  justify-content: center;
+  align-items: center;
+  margin-left: 50px;
+}
+
+#convidados div {
+  width: 0 !important;
+}
+
   #convidados div > img {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    /* align-items: center; */
     width: 100px;
     height: 100px;
   }
@@ -81,7 +105,7 @@
     justify-content: flex-end;
   }
 
-  #buttonFecharCartas, #buttonFecharConvidados {
+  #buttonFecharCartas{
     width: 100px;
     height: 50PX;
     background-color: transparent;
@@ -90,42 +114,57 @@
     color: white;
   }
 
-  #button-fechar-cartas:hover, #button-fechar-convidados:hover {
+  .buttonFecharConvidados {
+    width:  100px;
+    display: flex;
+    margin-left: 470px;
+  }
+
+  #buttonFecharConvidados {
+    width: 100vw;
+    height: 50px;
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 1em;
+    color: white;
+  }
+
+  #buttonFecharCartas:hover, #buttonFecharConvidados:hover {
     background-color: black;
   }
 
-  #button-fechar-cartas:hover, #button-fechar-convidados:hover {
+  #buttonFecharCartas:hover, #buttonFecharConvidados:hover {
     background-color: rgba(0, 0, 0, 0.7);
   }
 
   .container-convidados-exterior {
-    width: 50vw;
+    width: 100vw;
     display: grid;
-    grid-template-rows: repeat(4,180px);
+    grid-template-rows: repeat(4,250px);
     align-items: center;
   }
 
-  .container-convidados {
+  .containerConvidados {
     justify-content: center;
-  }
-
-  .resposta {
-    margin-right: 10px;
-
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+    height: 10vh;
   }
 
   #barras {
-    margin-left: 70px;
     justify-content: center;
     display: grid;
-    grid-template-columns: repeat(3, 265px);
+    grid-template-columns: repeat(3, 200px);
     font-size: 13px;
     font-weight: lighter;
+    height: 0px;
   }
 
   .card {
-    display: flex;
+    /* display: flex; */
     margin-left: 10px;
+    justify-content: center;
+    height: 200px;
   }
 
   .progress-bar {
@@ -139,10 +178,9 @@
   }
 
   .progress {
-    /* justify-content: center; */
+
     width: 0%;
     max-width: 150px;
-    height: 100%;
     background-color: #4caf50;
     border-radius: 10px;
     transition: width 0.5s ease;
