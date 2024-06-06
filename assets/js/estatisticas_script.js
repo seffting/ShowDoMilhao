@@ -53,7 +53,7 @@ function aleatorio(min, max) {
 }
 
 // PARTE DAS ESTATISTICAS ----------------------------------
-
+contarEstatisticas()
 /* Retorna um vetor de 8 itens {
     0 -> total de dicas
     1 -> total de pulos
@@ -64,7 +64,7 @@ function aleatorio(min, max) {
     6 -> total de vitorias
     7 -> total de tempo jogado
 */
-function lerHistorico() {
+function contarEstatisticas() {
     const historicosString = localStorage.getItem("historicos");
     const historico = JSON.parse(historicosString);
     let totalDicas = 0;
@@ -81,6 +81,7 @@ function lerHistorico() {
         totalPulos += jogo["Pulos usados"];
         totalPontuacao += jogo["Pontuação"];
         totalPerguntasRespondidas += jogo["Quantidade perguntas respondidas"];
+        // ----- Resultado do jogo
         let resultado = jogo["Resultado da partida"];
         switch (resultado) {
             case "perdeu":
@@ -95,30 +96,98 @@ function lerHistorico() {
             default:
                 break;
         }
+        let tempoAtual = horarioParaSegundos(totalTempoJogado)
+        let tempoDeJogo = horarioParaSegundos(jogo["Tempo da partida"]);
 
-        let tempoAtual = totalTempoJogado.split(":")
-        let tempoDeJogo = jogo["Tempo da partida"].split(":");
-        tempoAtual[0] = parseInt(tempoAtual[0]);
-        tempoAtual[1] = parseInt(tempoAtual[1]);
-        tempoAtual[2] = parseInt(tempoAtual[2]);
-
-        tempoAtual[2] += parseInt(tempoDeJogo[2]);
-        if (tempoAtual[2] >= 60) {
-            tempoAtual[2] -= 60;
-            tempoAtual[1]++;
-        }
-        tempoAtual[1] += parseInt(tempoDeJogo[1]);
-        if (tempoAtual[1] >= 60) {
-            tempoAtual[1] -= 60;
-            tempoAtual[0]++;
-        }
-        tempoAtual[0] += parseInt(tempoDeJogo[0]);
-
-        totalTempoJogado = tempoAtual[0] + ":" + tempoAtual[1] + ":" + tempoAtual[2];
+        totalTempoJogado = formatarHorario(tempoAtual + tempoDeJogo);
     });
 
     const estatisticas = [totalDicas, totalPulos, totalPontuacao, totalPerguntasRespondidas,
         totalDerrotas, totalDesistencias, totalVitorias, totalTempoJogado];
 
+        console.log(estatisticas)
     return estatisticas;
+
+}
+
+melhoresEstatisticas();
+
+/* Retorna um vetor de 4 itens {
+    0 -> partida mais longa
+    1 -> vitoria mais rapida
+    2 -> vitoria com menor numero de dicas
+    3 -> vitoria com menor numero de pulos
+    Retornam -1 caso não tenha dados
+*/
+function melhoresEstatisticas() {
+    const historicosString = localStorage.getItem("historicos");
+    const historico = JSON.parse(historicosString);
+    let vitoriaMaisRapida = -1;
+    let jogoMaisDemorado = -1;
+    let menorNumeroDicas = -1;
+    let menorNumeroPulos = -1;
+
+    historico.forEach((jogo) => {
+        let resultado = jogo["Resultado da partida"];
+        let tempoDeJogo = horarioParaSegundos(jogo["Tempo da partida"]);
+        let dicas = jogo["Dicas usadas"];
+        let pulos = jogo["Pulos usados"];
+
+        console.log(resultado + " - " + formatarHorario(tempoDeJogo) + " | d: " + dicas + " p: " + pulos);
+
+        jogoMaisDemorado = calcularMelhor(tempoDeJogo, jogoMaisDemorado);
+        // Dados de vitórias
+        if (resultado == "venceu") {
+            vitoriaMaisRapida = calcularMelhor(tempoDeJogo, vitoriaMaisRapida, true);
+            menorNumeroDicas = calcularMelhor(dicas, menorNumeroDicas, true);
+            menorNumeroPulos = calcularMelhor(pulos, menorNumeroPulos, true);
+        }
+    });
+
+    jogoMaisDemorado = jogoMaisDemorado != -1 ?
+        jogoMaisDemorado = formatarHorario(jogoMaisDemorado) :
+        jogoMaisDemorado;
+    vitoriaMaisRapida = vitoriaMaisRapida != -1 ?
+        vitoriaMaisRapida = formatarHorario(vitoriaMaisRapida) :
+        vitoriaMaisRapida;
+
+    const melhoresEstatisticas = [jogoMaisDemorado, vitoriaMaisRapida, menorNumeroDicas, menorNumeroPulos];
+
+    console.log(melhoresEstatisticas);
+    return melhoresEstatisticas;
+}
+
+function calcularMelhor(atual, melhor, menorQue = false) {
+    let resultado;
+    melhor == -1 ? resultado = atual : resultado = melhor;
+
+    if (menorQue) {
+        if (atual < melhor) {
+            resultado = atual;
+        }
+    } else {
+        if (atual > melhor) {
+            resultado = atual;
+        }
+    }
+
+    return resultado;
+}
+
+function formatarHorario(horario) {
+    let horas = Math.floor(horario / 3600);
+    let minutos = Math.floor((horario - horas * 3600) / 60);
+    let segundos = Math.floor(horario % 60);
+    horas = horas < 10 ? "0" + horas : horas;
+    minutos = minutos < 10 ? "0" + minutos : minutos;
+    segundos = segundos < 10 ? "0" + segundos : segundos;
+    return horas + ":" + minutos + ":" + segundos;
+}
+
+function horarioParaSegundos(horario) {
+    let partesHorario = horario.split(":");
+    for (let i = 0; i < 3; i++) {
+        partesHorario[i] = parseInt(partesHorario[i]);
+    }
+    return (partesHorario[0] * 60 + partesHorario[1]) * 60 + partesHorario[2];
 }
