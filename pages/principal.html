@@ -4,9 +4,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="assets/css/menu_style.css">
-  <link rel="stylesheet" href="assets/css/tela_rodadas_style.css">
-  <link rel="stylesheet" href="assets/css/dicas_estilo.css">
+  <link rel="stylesheet" href="../assets/css/menu_style.css">
+  <link rel="stylesheet" href="../assets/css/tela_rodadas_style.css">
+  <link rel="stylesheet" href="../assets/css/dicas_estilo.css">
+  <link rel="stylesheet" href="../assets/css/botao_parar_style.css">
 
   <link rel="shortcut icon" href="/assets/img/favicon.png" type="image/x-icon">
   <script src="../assets/js/principal-script.js" type="module" async></script>
@@ -138,6 +139,17 @@
       </div>
     </div>
     <div id="containerDireita" class="displayCenter">
+      <dialog id="dialogoSair">
+        <div id="containerDailogSair">
+          <span id="tituloSair">Sair</span>
+          <div id="textoDialogoSair">
+          </div>
+          <div id="containerBotoesEscolha">
+            <button type="button" class="botaoDialogo" id="botaoSim">Sim</button>
+            <button type="button" class="botaoDialogo" id="botaoNao">Não</button>
+          </div>
+        </div>
+      </dialog>
       <div id="containerMeio">
         <!-- -----------PERGUNTAS----------- -->
         <div id="containerPerguntasEValores">
@@ -188,7 +200,7 @@
                 <span>R$</span>
                 <span id="valorParar">500 MIL</span>
               </div>
-              <button id="botaoParar">PARAR</button>
+                <button id="botaoParar">PARAR</button>
             </div>
             <div id="acertar" class="displayCenter">
               <div class="valores">

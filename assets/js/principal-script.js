@@ -394,6 +394,41 @@ function chutePublico(chanceAtual) {
   return resposta;
 }
 
+// Botão parar
+
+let premioAtual = "50 MIL"; // Placeholder para a pontuação atual do usuário, que ele ganha ao parar 
+
+botaoParar.addEventListener("click", confirmaSaida);
+botaoNao.addEventListener("click", fechaDialogoSair);
+botaoSim.addEventListener("click", sairJogo);
+
+function confirmaSaida() {
+  const fundoParar = document.getElementById("containerDireita");
+  fundoParar.style.opacity = "15%";
+  let dialogoSair = document.getElementById("dialogoSair");
+  let campoTextoDialogo =  document.getElementById("textoDialogoSair");
+  campoTextoDialogo.innerHTML = 
+  `<div id="frase1">
+      <span>Se sair, irá ficar com </span>
+        <div class="circulo">
+        <span class="iconeCifrao">R$</span>
+        </div>
+        <span>${premioAtual}.</span>
+    </div>
+    <div id="frase2">\nTem certeza de que quer sair?</div>`;
+  dialogoSair.showModal();
+}
+
+function sairJogo () {
+    fechaDialogoSair();
+}
+
+function fechaDialogoSair () {
+    const fundoParar = document.getElementById("containerDireita");
+    fundoParar.style.opacity = "100%";
+    let dialogoSair = document.getElementById("dialogoSair");
+    dialogoSair.close();
+}
 
 // -------------NECESSÁRIO PASSAR UMA VARIÁVEL "RODADA" COMO ARGUMENTO, QUE SERÁ A CONTABILIZADORA DOS NÍVEIS 1 A 16 DO JOGO.-------------
 
