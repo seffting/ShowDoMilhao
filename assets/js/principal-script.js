@@ -2,8 +2,16 @@ import { perguntas } from "../../data/perguntas.js";
 
 const botaoDicaCartas = document.getElementById('botaoAjuda1');
 const botaoDicaConvidados = document.getElementById("botaoAjuda2");
-let rodada = 1;
+const botaoPuloUm = document.getElementById("botaoPulo1");
+const botaoPuloDois = document.getElementById("botaoPulo2");
+const botaoPuloTres = document.getElementById("botaoPulo3");
+
+const arrayCerteza = [];
+const arrayResposta = [];
+let rodada = null;
 let emJogo = true;
+let tempoJogo = 0; 
+let intervalo;
 
 const telaMenu = document.getElementById("containerConteudo");
 const telaRodadas = document.getElementById("secaoTelaRodadas");
@@ -11,7 +19,11 @@ telaRodadas.style.display = "none";
 
 document.getElementById("botaoJogar").addEventListener("click", function () {
   telaMenu.style.display = "none";
+  rodada = 1;
   telaRodadas.style.display = "";
+  tempoJogo = 0;
+  iniciaRelogio();
+  tornarBotoesHabilitado();
   comecaRodada();
 });
 
@@ -30,6 +42,8 @@ let pergunta;
 let nrsPerguntasUsadas = [];
 
 function comecaRodada() { // Placeholder de sequência da rodada
+  arrayCerteza.length = 0;
+  arrayResposta.length = 0;
   botaoDicaCartas.disabled = false;
   botaoDicaConvidados.disabled = false;
   pergunta = carregaQuestao();
@@ -84,16 +98,8 @@ function valido(nrPerguntaAtual) { // Confere se a pergunta não foi usada ainda
 
 //pulos
 
-let pulos = 3;
-
-const botoesPulo = document.getElementById("pulos");
-
-botoesPulo.childNodes.forEach(botao => {
-  botao.addEventListener('click', pular)
-})
-
 function pular() {
-  pulos--;
+  console.log("Lula Livre")
   tornarBotaoCinza(this); // Passa o próprio botão como argumento
 }
 
@@ -105,10 +111,24 @@ function tornarBotaoCinza(botao) {
   comecaRodada();
 }
 
-// leitura dos 3 botões de pulo
-document.getElementById("botaoPulo1").addEventListener("click", pular);
-document.getElementById("botaoPulo2").addEventListener("click", pular);
-document.getElementById("botaoPulo3").addEventListener("click", pular);
+function tornarBotoesHabilitado(){
+
+  botaoPuloUm.disabled = false;
+  botaoPuloDois.disabled = false;
+  botaoPuloTres.disabled = false;
+
+  botaoPuloUm.addEventListener('click', pular);
+  botaoPuloDois.addEventListener('click', pular);
+  botaoPuloTres.addEventListener('click', pular);
+
+  botaoPuloUm.style.backgroundColor = "";
+  botaoPuloDois.style.backgroundColor = "";
+  botaoPuloTres.style.backgroundColor = "";
+
+  botaoPuloUm.style.color = "";
+  botaoPuloDois.style.color = "";
+  botaoPuloTres.style.color = "";
+}
 
 //Dicas --------------------------------------------------------
 
@@ -225,25 +245,23 @@ const rodadaFinal = 16;
 const chanceMax = 90;
 const chanceMin = 70;
 
-const arrayCerteza = [];
-const arrayResposta = [];
 const dicaConvidados = document.getElementById('mostrarDicaConvidados');
+
 botaoDicaConvidados.addEventListener('click', mostrarDicaConvidados);
 
 function mostrarDicaConvidados() {
   dicaConvidados.style.display = "block";
   ajudaConvidados();
-
   botaoDicaConvidados.disabled = true;
   botaoDicaConvidados.style.backgroundColor = "lightgray";
   botaoDicaConvidados.style.color = "gray";
 }
 
-function atualizarBarraPorcentagem() {
-  const barraPorcentagem = document.getElementById("barras");
+// function atualizarBarraPorcentagem() {
+//   const barraPorcentagem = document.getElementById("barras");
 
-  barraPorcentagem.style.width = porcentagem + "%";
-}
+//   barraPorcentagem.style.width = porcentagem + "%";
+// }
 
 // ajudaConvidados();
 function ajudaConvidados() {
@@ -278,7 +296,7 @@ function chuteConvidado(chanceAtual) {
 
   arrayCerteza.push(certeza);
   arrayResposta.push(resposta);
-  console.log(arrayCerteza)
+  console.log(arrayCerteza);
 }
 
 function mostrarBarraProgresso() {
@@ -408,7 +426,7 @@ const valorAcertar = document.getElementById("valorAcertar");
 function calculaPremio() {// adicionar parametro para função do lucas
 
     const valoresAcertar = [1, 2, 3, 4, 5, 10, 20, 30, 40, 50, 100, 200, 300, 400, 500, 1];
-    let acertar, errar, parar, acertarFormatado, pararFormatado, errarFormatado;
+    let acertar, errar, parar;
         acertar = valoresAcertar[rodada - 1];
 
         if (rodada === 1) {
@@ -419,7 +437,8 @@ function calculaPremio() {// adicionar parametro para função do lucas
             errar = parar / 2;
         }
 
-        formataValores(acertar, parar, errar, rodada)
+        formataValores(acertar, parar, errar, rodada);
+
 }
 
 
@@ -459,7 +478,9 @@ function encerrarJogo() {
   botaoDicaConvidados.style.backgroundColor = "";
   botaoDicaConvidados.style.color = "";
   cartaClicada = true;
+  tempoJogo = 0;
   habilitarRespostas();
+  paraRelogio();
 }
 
 function habilitarRespostas(){
@@ -477,3 +498,41 @@ document.getElementById("botaoParar").addEventListener("click", function() {
   emJogo = false;
   encerrarJogo();
 });
+
+//Relógio
+function cicloRelogio() {
+    tempoJogo++;
+    document.getElementById("relogioTempoJogo").innerHTML = atualizaTempoTela(tempoJogo);
+}
+
+function atualizaTempoTela (tempo) { // Transforma o tempo de jogo em horário na tela
+
+    let horas = Math.floor(tempo/3600);
+    let minutos = Math.floor((tempo - (horas * 3600)) / 60);
+    let segundos = tempo - (horas * 3600) - (minutos * 60);
+
+    if (validoHorario(horas, minutos, segundos)){
+        horas = horas < 10 ? ("0" + horas) : horas;
+        minutos = minutos < 10 ? ("0" + minutos) : minutos;
+        segundos = segundos < 10 ? ("0" + segundos) : segundos;
+    
+        return horas+':'+minutos+':'+segundos;
+    } else {
+        paraRelogio();
+    }
+}
+
+function validoHorario (horas, minutos, segundos) { // Confere se o tempo vai até 23:59:59
+    return (horas<=23 && minutos<=59 && segundos<=59);
+}
+
+
+function iniciaRelogio(){ // Seta o intervalo de iteração do ciclo do relógio (1s)
+    intervalo = setInterval(cicloRelogio, 1000);
+}
+
+
+function paraRelogio(){ // Para o ciclo do relógio e retorna o tempo de jogo em milissegundos
+    clearInterval(intervalo);
+    return tempoJogo;
+}
