@@ -42,7 +42,7 @@ function carregaQuestao () { // Pega uma questão da lista
 
 function confereResposta(){  // Validação de conferir a resposta.
     let acertou = pergunta["resposta"] == this.id;
-    // console.log(acertou);
+    console.log(acertou);
     return acertou;
 }
 
