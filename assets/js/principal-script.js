@@ -1,10 +1,15 @@
 import { perguntas } from "../../data/perguntas.js";
 
+const botaoDicaCartas = document.getElementById('botaoAjuda1');
+const botaoDicaConvidados = document.getElementById("botaoAjuda2");
+let rodada = 1;
+let emJogo = true;
+
+const telaMenu = document.getElementById("containerConteudo");
 const telaRodadas = document.getElementById("secaoTelaRodadas");
 telaRodadas.style.display = "none";
 
 document.getElementById("botaoJogar").addEventListener("click", function () {
-  const telaMenu = document.getElementById("containerConteudo");
   telaMenu.style.display = "none";
   telaRodadas.style.display = "";
   comecaRodada();
@@ -25,8 +30,11 @@ let pergunta;
 let nrsPerguntasUsadas = [];
 
 function comecaRodada() { // Placeholder de sequência da rodada
+  botaoDicaCartas.disabled = false;
+  botaoDicaConvidados.disabled = false;
   pergunta = carregaQuestao();
   mostraElementos(pergunta);
+  calculaPremio();
 }
 
 function mostraElementos(pergunta) { // Mostra os elementos na tela
@@ -57,7 +65,16 @@ function confereResposta() {
   // Validação de conferir a resposta.
   let acertou = pergunta["resposta"]-1 == this.id;
   console.log(acertou)
-  return acertou;
+
+  habilitarRespostas();
+
+  if (acertou) {
+    rodada++;
+    comecaRodada();
+  } else {
+    emJogo = false;
+    encerrarJogo();
+  }
 }
 
 function valido(nrPerguntaAtual) { // Confere se a pergunta não foi usada ainda
@@ -83,7 +100,7 @@ function pular() {
 function tornarBotaoCinza(botao) {
   // desativa o botão de pulo clicado
   botao.style.backgroundColor = "lightgray";
-  botao.style.color = "black";
+  botao.style.color = "gray";
   botao.disabled = true;
   comecaRodada();
 }
@@ -98,9 +115,9 @@ document.getElementById("botaoPulo3").addEventListener("click", pular);
 //Pegando os elementos do html
 const dicaCartas = document.getElementById('mostrarDicaCartas');
 const divCartas = document.getElementById('cartas');
-const botaoDicaCartas = document.getElementById('botaoAjuda1');
+let imagemSorteada;
 let cartaClicada = true;
-const cartas = []
+
 
 //Responsável por chamar a tela e dispor ela sobre os elementos
 //OBS.: substituir pelo addEventListener do click do botão
@@ -108,6 +125,7 @@ botaoDicaCartas.addEventListener('click', mostrarDicaCartas);
 
 function mostrarDicaCartas() {
   dicaCartas.style.display = "block";
+  imagemSorteada = sortearImagem();
   criarCartas();
 }
 
@@ -135,6 +153,20 @@ function criarCartas() {
     novaCarta.appendChild(imgCarta);
     console.log(novaCarta.childNodes);
     divCartas.appendChild(novaCarta);
+
+    //Responsável pelo evento de mostrar as cartas aleatoriamente com base no valor sorteado
+    imgCarta.addEventListener('click', () => {
+      if (cartaClicada) {
+        if (imgCarta.src.endsWith("verso-carta.png")) {
+          imgCarta.src = imagens[imagemSorteada].caminho;
+          botaoDicaCartas.disabled = true;
+          botaoDicaCartas.style.backgroundColor = "lightgray";
+          botaoDicaCartas.style.color = "gray";
+          removerRespostasErradas();
+        } 
+          cartaClicada = false;
+      }
+    });
   }
 }
 
@@ -154,7 +186,7 @@ const sortearImagem = () => {
 }
 
 //Armazena o valor da posição do array sorteado
-const imagemSorteada = sortearImagem();
+
 
 //Retorna o valor correspondente de perguntas a serem excluídas
 
@@ -163,21 +195,22 @@ const retornaValorImagem = () => {
   return imagens[imagemSorteada].valor;
 }
 
-//Responsável pelo evento de mostrar as cartas aleatoriamente com base no valor sorteado
-divCartas.childNodes.forEach(carta => {
-  carta.childNodes.forEach(cartaImg => {
-    cartaImg.addEventListener('click', () => {
-      if (cartaClicada) {
-        if (cartaImg.src.endsWith("/verso-carta.png")) {
-          cartaImg.src = imagens[imagemSorteada].caminho;
-        } else {
-          cartaImg.src = "imagem1.jpg";
-        }
-        cartaClicada = false;
-      }
-    })
-  })
-});
+function removerRespostasErradas(){
+  let i = 0;
+  let j = 0;
+  while(i != retornaValorImagem()) {
+
+    let elmtResposta = document.getElementById(j);
+    
+    if(pergunta["resposta"]-1 != elmtResposta.id){
+      
+      elmtResposta.removeEventListener('click', confereResposta);
+      elmtResposta.style.opacity = "0.5";
+      i++
+    } 
+    j++;
+  }
+}
 
 //Responsável por permitir fechar a tela
 const botaoFecharCartas = document.getElementById('buttonFecharCartas');
@@ -188,30 +221,25 @@ botaoFecharCartas.addEventListener('click', () => {
 
 
 // Dica convidados
-const rodada = 1; // PLACEHOLDER
 const rodadaFinal = 16;
 const chanceMax = 90;
 const chanceMin = 70;
-const respostaCerta = 1; // PLACEHOLDER
+
 const arrayCerteza = [];
 const arrayResposta = [];
+const dicaConvidados = document.getElementById('mostrarDicaConvidados');
+botaoDicaConvidados.addEventListener('click', mostrarDicaConvidados);
 
-const imagensConvidados = [
-  { caminho: '/assets/img/usuario1.svg' },
-  { caminho: '/assets/img/usuario2.png' },
-  { caminho: '/assets/img/usuario3.png' }
-]
-
-criarConvidados();
-
-function criarConvidados() {
-
-  for (let index = 0; index < 3; index++) {
-  }
+function mostrarDicaConvidados() {
+  dicaConvidados.style.display = "block";
   ajudaConvidados();
+
+  botaoDicaConvidados.disabled = true;
+  botaoDicaConvidados.style.backgroundColor = "lightgray";
+  botaoDicaConvidados.style.color = "gray";
 }
 
-function atualizarBarraPorcentagem(porcentagem) {
+function atualizarBarraPorcentagem() {
   const barraPorcentagem = document.getElementById("barras");
 
   barraPorcentagem.style.width = porcentagem + "%";
@@ -235,11 +263,11 @@ function chuteConvidado(chanceAtual) {
   let resposta;
   let certeza;
   if (chanceAtual >= numSorteado) { // caso seja sorteado a resposta ser correta
-    resposta = respostaCerta;
+    resposta = pergunta["resposta"];
     certeza = calcularCerteza(chanceAtual, true);
   } else { // caso seja sorteado a resposta ser incorreta
     let respostas = [1, 2, 3, 4];
-    const indexRespostaCerta = respostas.indexOf(respostaCerta);
+    const indexRespostaCerta = respostas.indexOf(pergunta["resposta"]);
     // remover a resposta certa do array
     respostas.splice(indexRespostaCerta, 1);
 
@@ -302,7 +330,6 @@ function calcularCerteza(chanceAtual, respostaCerta) {
 }
 
 const botaoFecharConvidados = document.getElementById('buttonFecharConvidados');
-const dicaConvidados = document.getElementById('mostrarDicaConvidados');
 
 botaoFecharConvidados.addEventListener('click', () => {
   dicaConvidados.style.display = "none";
@@ -353,10 +380,10 @@ function chutePublico(chanceAtual) {
   let resposta;
 
   if (chanceAtual >= numSorteado) { // caso seja sorteado a resposta ser correta
-      resposta = respostaCerta;
+      resposta = pergunta["resposta"];
   } else { // caso seja sorteado a resposta ser incorreta
       let respostas = [1, 2, 3, 4];
-      const indexRespostaCerta = respostas.indexOf(respostaCerta);
+      const indexRespostaCerta = respostas.indexOf(pergunta["resposta"]);
       // remover a resposta certa do array
       respostas.splice(indexRespostaCerta, 1);
 
@@ -402,3 +429,86 @@ function fechaDialogoSair () {
     let dialogoSair = document.getElementById("dialogoSair");
     dialogoSair.close();
 }
+
+// -------------NECESSÁRIO PASSAR UMA VARIÁVEL "RODADA" COMO ARGUMENTO, QUE SERÁ A CONTABILIZADORA DOS NÍVEIS 1 A 16 DO JOGO.-------------
+
+const valorErrar = document.getElementById("valorErrar");
+const valorParar = document.getElementById("valorParar");
+const valorAcertar = document.getElementById("valorAcertar");
+
+
+    // -------------PARA USAR OS VALORES RETORNADOS > premiosFormatados.acertarFormatado | premiosFormatados.pararFormatado | premiosFormatados.errarFormatado------------
+
+    // -------------FUNÇÃO QUE RETORNA OS VALORES A CADA RODADA-------------
+function calculaPremio() {// adicionar parametro para função do lucas
+
+    const valoresAcertar = [1, 2, 3, 4, 5, 10, 20, 30, 40, 50, 100, 200, 300, 400, 500, 1];
+    let acertar, errar, parar, acertarFormatado, pararFormatado, errarFormatado;
+        acertar = valoresAcertar[rodada - 1];
+
+        if (rodada === 1) {
+            parar = 0.5;
+            errar = 0;
+        } else {
+            parar = valoresAcertar[rodada - 2];
+            errar = parar / 2;
+        }
+
+        formataValores(acertar, parar, errar, rodada)
+}
+
+
+    // -------------FUNÇÃO QUE FORMATA OS VALORES + MILHAR OU MILHÃO EM STRING-------------
+function formataValores(acertar, parar, errar, rodada){
+  let acertarFormatado, pararFormatado, errarFormatado;
+
+    if(rodada === 1){
+        acertarFormatado = `${acertar} MIL`
+        pararFormatado = `500`
+        errarFormatado = `0`
+
+    } else if(rodada === 2){
+        acertarFormatado = `${acertar} MIL`
+        pararFormatado = `${parar} MIL`
+        errarFormatado = `500`
+    } else if(rodada === 16){
+        acertarFormatado = `${acertar} MILHÃO`
+        pararFormatado = `${parar} MIL`
+        errarFormatado = `${errar} MIL`
+    } else{
+        acertarFormatado = `${acertar} MIL`
+        pararFormatado = `${parar} MIL`
+        errarFormatado = `${errar} MIL`
+    }
+
+    valorErrar.innerHTML = errarFormatado;
+    valorParar.innerHTML = pararFormatado;
+    valorAcertar.innerHTML = acertarFormatado;
+}
+
+function encerrarJogo() {
+  telaMenu.style.display = "";
+  telaRodadas.style.display = "none";
+  botaoDicaCartas.style.backgroundColor = "";
+  botaoDicaCartas.style.color = "";
+  botaoDicaConvidados.style.backgroundColor = "";
+  botaoDicaConvidados.style.color = "";
+  cartaClicada = true;
+  habilitarRespostas();
+}
+
+function habilitarRespostas(){
+  for (var i = 0; i < 4; i++) {
+    let elmtResposta = document.getElementById(i);
+    elmtResposta.innerHTML = pergunta["escolha" + (i + 1)];
+    elmtResposta.style.backgroundColor = "#211B15";
+    elmtResposta.style.opacity = 1;
+    elmtResposta.addEventListener('click', confereResposta)
+  }
+}
+
+document.getElementById("botaoParar").addEventListener("click", function() {
+  // Quando o botão de parar for clicado a partida se encerra tornando a condição do loop falsa
+  emJogo = false;
+  encerrarJogo();
+});
