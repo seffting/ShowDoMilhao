@@ -7,16 +7,20 @@
     <link rel="stylesheet" href="../assets/css/botao_parar_style.css">
 </head>
 <body>
-    <div id="container_botao_parar">
-      <button id="botaoParar">PARAR</button>
+  <div id="container_botao_parar">
+    <button id="botaoParar">PARAR</button>
       <dialog id="dialogoSair">
+        <div id="container">
+          <span id="tituloSair">Sair</span>
           <div id="textoDialogoSair">
-            <span id="tituloSair">Sair</span>
           </div>
-          <button type="button" id="botaoSim">Sim</button>
-          <button type="button" id="botaoNao">Não</button>
+          <div id="containerBotoesEscolha">
+            <button type="button" class="botaoDialogo" id="botaoSim">Sim</button>
+            <button type="button" class="botaoDialogo" id="botaoNao">Não</button>
+          </div>
+        </div>
       </dialog>
-    </div>
+  </div>
     <script src="../assets/js/botao_parar_script.js"></script>
 </body>
 </html>

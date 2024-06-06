@@ -376,6 +376,8 @@ botaoNao.addEventListener("click", fechaDialogoSair);
 botaoSim.addEventListener("click", sairJogo);
 
 function confirmaSaida() {
+    const fundoParar = document.getElementById("containerDireita");
+    fundoParar.style.opacity = "15%";
     let dialogoSair = document.getElementById("dialogoSair");
     let campoTextoDialogo =  document.getElementById("textoDialogoSair");
     campoTextoDialogo.innerHTML = 
@@ -392,6 +394,8 @@ function sairJogo () {
 }
 
 function fechaDialogoSair () {
+    const fundoParar = document.getElementById("containerDireita");
+    fundoParar.style.opacity = "100%";
     let dialogoSair = document.getElementById("dialogoSair");
     dialogoSair.close();
 }

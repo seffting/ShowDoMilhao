@@ -32,7 +32,7 @@ let perguntas = [
     resposta: 2
   },
   {
-    pergunta: "Qual casal foi expluso do Paraíso?",
+    pergunta: "Qual casal foi expulso do Paraíso?",
     escolha1: "Sansão e Dalila",
     escolha2: "José e Maria",
     escolha3: "Sara e Abraão",
