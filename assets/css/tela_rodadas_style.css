@@ -32,6 +32,23 @@
         background-size: 30px !important;
         font-size: 10px;
     }
+    #textoResultado{
+        font-size: 20px !important;
+    }
+
+    #containerResultado{
+        font-size: 30px !important;
+    }
+
+    #botaoSairFinalPartida{
+        height: 30px !important;
+        width: 110px !important;
+        font-size: 15px !important;
+    }
+
+    #nSeiMaisOq{
+        width: 80% !important;
+    }
   }
 
 
