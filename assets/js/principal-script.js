@@ -39,9 +39,12 @@ document.getElementById("botaoJogar").addEventListener("click", function () {
   comecaRodada();
 });
 
+document.getElementById("botaoHistorico").addEventListener("click", function () {
+  window.location.href = "../pages/historico.html";
+});
 
 document.getElementById("botaoEstatisticas").addEventListener("click", function () {
-  mostrarEstatisticas(); // mapeia o click do botão de estatísticas
+  window.location.href = "../pages/estatisticas.html";
 });
 
 //Lógica questões

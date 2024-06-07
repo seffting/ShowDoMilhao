@@ -5,6 +5,7 @@ window.addEventListener('load', function() {
     if (window.location.href.includes('/pages/historico.html')) {
         // Se corresponder, execute sua função
         // adicionarRegistro(0, 1, 2, 3, "Parou", "00:00:01", "07/06/2024");
+        popularHistorico();
     }
 });
 
@@ -42,10 +43,12 @@ function adicionarRegistro(dicas, pulos, pts, perguntasRespondidas, resultadoFin
     };
  
     historico.push(novoRegistro);
+    localStorage.setItem('historico', JSON.stringify(historico));
 }
 
 function popularHistorico() {
-    historico.forEach(jogo => {
+  let jogos = JSON.parse(localStorage.getItem('historico'));
+  jogos.forEach(jogo => {
         let dicas = jogo["dicasUsadas"];
         let pulos = jogo["pulosUsados"];
         let pontuacao = jogo["pontuacao"];
