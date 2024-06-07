@@ -34,14 +34,23 @@ document.getElementById("botaoJogar").addEventListener("click", function () {
   rodada = 1;
   telaRodadas.style.display = "";
   tempoJogo = 0;
+  const audioAbertura = document.getElementById("audioAbertura");
+  audioAbertura.pause();
+  audioAbertura.currentTime = 0; // Reseta o áudio para o início
   iniciaRelogio();
   tornarBotoesHabilitado();
   comecaRodada();
+  setTimeout(function() {
+    audioPerguntar()
+}, 1000);
 });
 
+document.getElementById("botaoHistorico").addEventListener("click", function () {
+  window.location.href = "../pages/historico.html";
+});
 
 document.getElementById("botaoEstatisticas").addEventListener("click", function () {
-  mostrarEstatisticas(); // mapeia o click do botão de estatísticas
+  window.location.href = "../pages/estatisticas.html";
 });
 
 //Lógica questões
@@ -92,16 +101,22 @@ function confereResposta() {
     premioAtual = acertarFormatado;
     if (rodada < 16) {     
       rodada++;
+      audioAcertou();
       comecaRodada();
-      } else {
+      const pegaPontuacao = document.getElementById("pontuacao"+rodada)
+      pegaPontuacao.style.color = "#cb9f2f"
+    } else {
       conferirResultado = "Venceu";
       encerrarJogo();
     }
   } else {
+    audioErrou()
+    setTimeout(function() {
     premioAtual = errarFormatado;
     conferirResultado = "Perdeu"
     emJogo = false;
     encerrarJogo();
+  }, 2000);
   }
 }
 
@@ -560,6 +575,7 @@ function encerrarJogo() {
   cartaClicada = true;
   tempoJogo = 0;
   document.getElementById("relogioTempoJogo").innerHTML = atualizaTempoTela(tempoJogo);
+  resetarCoresPontuacao();  
   habilitarRespostas();
   paraRelogio();
 }
@@ -624,3 +640,39 @@ function paraRelogio(){ // Para o ciclo do relógio e retorna o tempo de jogo em
     return tempoJogo;
 }
 
+function resetarCoresPontuacao(){
+  for(let i=2;i<=16;i++){
+    let resetaCor = document.getElementById("pontuacao"+i)
+    resetaCor.style.color = "white"
+  }
+}
+
+function audioPerguntar(){
+  const somPerguntar = document.getElementById("audioPerguntar");
+  somPerguntar.currentTime = 0;
+  somPerguntar.play();
+}
+
+function audioAcertou(){
+  const somAcertou = document.getElementById("audioAcertou");
+  somAcertou.currentTime = 0;
+  somAcertou.play();
+}
+
+function audioErrou(){
+  const somErrou = document.getElementById("audioErrou");
+  somErrou.currentTime = 0;
+  somErrou.play();
+}
+
+function audioParou(){
+  const somParou = document.getElementById("audioParou");
+  somParou.currentTime = 0;
+  somParou.play();
+}
+
+function audioVenceu(){
+  const somVenceu = document.getElementById("audioVenceu");
+  somVenceu.currentTime = 0;
+  somVenceu.play();
+}
