@@ -1,10 +1,11 @@
 import { historico } from "../../data/historico.js";
+import { atualizarHistorico } from "../../data/historico.js";
 
-window.addEventListener('load', function() {
+window.addEventListener('load', function () {
     // Verifica se a página atual corresponde à página desejada
     if (window.location.href.includes('/pages/historico.html')) {
         // Se corresponder, execute sua função
-        // adicionarRegistro(0, 1, 2, 3, "Parou", "00:00:01", "07/06/2024");
+
         popularHistorico();
     }
 });
@@ -13,9 +14,10 @@ window.addEventListener('load', function () {
     // Verifica se a página atual corresponde à página desejada
     if (window.location.href.includes('estatisticas.html')) {
         // Se corresponder, execute sua função
+
         let estatisticas = contarEstatisticas();
         let melhores = melhoresEstatisticas();
- 
+
         preencherDados(estatisticas, 0);
         preencherDados(melhores, 8)
     }
@@ -25,13 +27,16 @@ function preencherDados(dados, idInicial) {
     for (let i = 0; i < dados.length; i++) {
         const divPai = document.getElementById(i + idInicial);
         const novaDiv = document.createElement('div');
-        let dado = dados[i] == -1? "N/A" : dados[i];
+        let dado = dados[i] == -1 ? "N/A" : dados[i];
         novaDiv.innerHTML = dado;
         divPai.appendChild(novaDiv);
     }
 }
 
 function adicionarRegistro(dicas, pulos, pts, perguntasRespondidas, resultadoFinal, tempo, data) {
+    let historicoSalvo = JSON.parse(localStorage.getItem('historico')) || [];
+    
+    // Cria um novo registro
     const novoRegistro = {
         dicasUsadas: dicas,
         pulosUsados: pulos,
@@ -42,13 +47,15 @@ function adicionarRegistro(dicas, pulos, pts, perguntasRespondidas, resultadoFin
         dataPartida: data
     };
  
-    historico.push(novoRegistro);
-    localStorage.setItem('historico', JSON.stringify(historico));
+    // Adiciona o novo registro ao histórico
+    historicoSalvo.push(novoRegistro);
+    localStorage.setItem('historico', JSON.stringify(historicoSalvo));
+    atualizarHistorico(historicoSalvo);
 }
 
 function popularHistorico() {
-  let jogos = JSON.parse(localStorage.getItem('historico'));
-  jogos.forEach(jogo => {
+    let jogos = JSON.parse(localStorage.getItem('historico'));
+    jogos.forEach(jogo => {
         let dicas = jogo["dicasUsadas"];
         let pulos = jogo["pulosUsados"];
         let pontuacao = jogo["pontuacao"];
@@ -109,7 +116,6 @@ function gerarHtmlHistorico(pontuacao, data, tempo, pulos, dicas, perguntas, res
     7 -> total de tempo jogado
 */
 function contarEstatisticas() {
-    const historicos = historico;
     let totalDicas = 0;
     let totalPulos = 0;
     let totalPontuacao = 0;
@@ -119,7 +125,8 @@ function contarEstatisticas() {
     let totalVitorias = 0;
     let totalTempoJogado = "00:00:00";
 
-    historicos.forEach((jogo) => {
+    let jogos = JSON.parse(localStorage.getItem('historico'));
+    jogos.forEach(jogo => {
         totalDicas += jogo["dicasUsadas"];
         totalPulos += jogo["pulosUsados"];
         totalPontuacao += jogo["pontuacao"];
@@ -161,13 +168,13 @@ function contarEstatisticas() {
     Retornam -1 caso não tenha dados
 */
 function melhoresEstatisticas() {
-    const historicos = historico
     let vitoriaMaisRapida = -1;
     let jogoMaisDemorado = -1;
     let menorNumeroDicas = -1;
     let menorNumeroPulos = -1;
 
-    historicos.forEach((jogo) => {
+    let jogos = JSON.parse(localStorage.getItem('historico'));
+    jogos.forEach(jogo => {
         let resultado = jogo["resultado"];
         let tempoDeJogo = horarioParaSegundos(jogo["tempoPartida"]);
         let dicas = jogo["dicasUsadas"];
