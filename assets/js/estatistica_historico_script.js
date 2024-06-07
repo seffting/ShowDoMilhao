@@ -4,14 +4,14 @@ window.addEventListener('load', function() {
     // Verifica se a página atual corresponde à página desejada
     if (window.location.href.includes('historico.html')) {
         // Se corresponder, execute sua função
-        adicionarRegistro();
+        adicionarRegistro(0, 1, 2, 3, "Parou", "00:00:01", "07/06/2024");
         popularHistorico();
     }
 });
 
 window.addEventListener('load', function () {
     // Verifica se a página atual corresponde à página desejada
-    if (window.location.href.includes('historico.html')) {
+    if (window.location.href.includes('estatisticas.html')) {
         // Se corresponder, execute sua função
         let estatisticas = contarEstatisticas();
         let melhores = melhoresEstatisticas();
@@ -20,28 +20,28 @@ window.addEventListener('load', function () {
         preencherDados(melhores, 8)
     }
 });
- 
- 
+
 function preencherDados(dados, idInicial) {
     for (let i = 0; i < dados.length; i++) {
         const divPai = document.getElementById(i + idInicial);
-        const dado = document.createElement('div');
-        dado.innerHTML = dados[i];
-        divPai.appendChild(dado);
+        const novaDiv = document.createElement('div');
+        let dado = dados[i] == -1? "N/A" : dados[i];
+        novaDiv.innerHTML = dado;
+        divPai.appendChild(novaDiv);
     }
 }
 
-function adicionarRegistro() {
+function adicionarRegistro(dicas, pulos, pts, perguntasRespondidas, resultadoFinal, tempo, data) {
     const novoRegistro = {
-        dicasUsadas: 3,
-        pulosUsados: 2,
-        pontuacao: 500000,
-        qtPerguntasRespondidas: 15,
-        resultado: "Venceu",
-        tempoPartida: "01:12:43",
-        dataPartida: "01/01/2000"
+        dicasUsadas: dicas,
+        pulosUsados: pulos,
+        pontuacao: pts,
+        qtPerguntasRespondidas: perguntasRespondidas,
+        resultado: resultadoFinal,
+        tempoPartida: tempo,
+        dataPartida: data
     };
-
+ 
     historico.push(novoRegistro);
 }
 

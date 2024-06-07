@@ -1,32 +1,119 @@
-body {
+@font-face {
+    font-family: "Roboto", sans-serif;
+    src: url('../fonts/Roboto/')
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: "Roboto", sans-serif;
+    color: white;
+    font-weight: 500;
     background-color: #003642;
-    min-height: 100vh;
-}
+    height: 100vh;
+  }
 
-#tituloEstatisticas {
+header {
     height: 20%;
-}
-
-#estatisticasGerais {
     display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.estatGeral, .estatMelhor {
-    border: 1px solid lightblue;
+h1{
+    margin: 0;
+    font-size: 5rem;
+}
+
+main{
+    height: 80%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+    color: black;
+}
+
+#estatisticasGerais{
+    height: 50%;
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+}
+
+#colunaEsquerda, #colunaDireita{
+    height: 100%;
+    width: 49%;
     background-color: lightblue;
+    border-radius: 10px;
 }
 
-.estatMelhor {
-    margin: 0px 50px;
+#melhoresEstatisticas{
+    background-color: lightblue;
+    height: 35%;
+    width: 50%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    font-size: 15px;
 }
 
-.containerEstatisticas {
-    height: 20%;
-    background-color: dodgerblue;
-}
-
-#melhoresEstatisticas {
-    background-color: darkcyan;
+#colunaEsquerdaCima, #colunaEsquerdaBaixo, #colunaDireitaCima, #colunaDireitaBaixo{
+    height: 50%;
     width: 100%;
-    height: 20%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.estatGeral{
+    height: 70%;
+    width: 40%;
+    border-radius: 10px;
+    background-color: #009e9e;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    font-weight: bold;
+}
+
+.estatGeral > span, .estatMelhor > span{
+    margin: 10px;
+}
+
+.estatGeral > div, .estatMelhor > div {
+    color: white;
+    font-size: larger;
+}
+
+.estatGeral > span {
+    text-align: center;
+}
+
+#melhoresCima, #melhoresBaixo{
+    height: 50%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.estatMelhor{
+    box-sizing: border-box;
+    height: 80%;
+    width: 40%;
+    background-color: #f9b50a;
+    font-weight: bold;
+    border-radius: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+
 }
