@@ -677,7 +677,7 @@ let perguntas = [
     escolha2: "C++",
     escolha3: "Python",
     escolha4: "SQL",
-    resposta: 1
+    resposta: 4
   },
   {
     pergunta: "Qual evento histórico marcou o início da Primeira Guerra Mundial?",
