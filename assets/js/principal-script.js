@@ -1,4 +1,5 @@
 import { perguntas } from "../../data/perguntas.js";
+import { adicionarRegistro } from "./estatistica_historico_script.js";
 
 const botaoDicaCartas = document.getElementById('botaoAjuda1');
 const botaoDicaConvidados = document.getElementById("botaoAjuda2");
@@ -6,6 +7,9 @@ const botaoAbrirPublico = document.getElementById('botaoAjuda3');
 const botaoPuloUm = document.getElementById("botaoPulo1");
 const botaoPuloDois = document.getElementById("botaoPulo2");
 const botaoPuloTres = document.getElementById("botaoPulo3");
+let numDicas = null;
+let numPulos = null;
+let conferirResultado = 'Perdeu';
 let premioAtual;
 let acertarFormatado, pararFormatado, errarFormatado;
 
@@ -24,7 +28,8 @@ document.getElementById("botaoJogar").addEventListener("click", function () {
   botaoDicaCartas.disabled = false;
   botaoDicaConvidados.disabled = false;
   botaoAbrirPublico.disabled = false;
-
+  numDicas = 0;
+  numPulos = 0;
   telaMenu.style.display = "none";
   rodada = 1;
   telaRodadas.style.display = "";
@@ -41,23 +46,21 @@ document.getElementById("botaoJogar").addEventListener("click", function () {
 });
 
 document.getElementById("botaoHistorico").addEventListener("click", function () {
-  mostrarHistorico(); // mapeia o click do botão de histórico
+  window.location.href = "../pages/historico.html";
 });
 
 document.getElementById("botaoEstatisticas").addEventListener("click", function () {
-  mostrarEstatisticas(); // mapeia o click do botão de estatísticas
+  window.location.href = "../pages/estatisticas.html";
 });
 
 //Lógica questões
-// comecaRodada();
 let nrPerguntaAtual;
 let pergunta;
 let nrsPerguntasUsadas = [];
 
-function comecaRodada() { // Placeholder de sequência da rodada
+function comecaRodada() {
   arrayCerteza.length = 0;
   arrayResposta.length = 0;
-
   pergunta = carregaQuestao();
   mostraElementos(pergunta);
   calculaPremio();
@@ -100,16 +103,17 @@ function confereResposta() {
       rodada++;
       audioAcertou();
       comecaRodada();
-
       const pegaPontuacao = document.getElementById("pontuacao"+rodada)
       pegaPontuacao.style.color = "#cb9f2f"
     } else {
+      conferirResultado = "Venceu";
       encerrarJogo();
     }
   } else {
     audioErrou()
     setTimeout(function() {
     premioAtual = errarFormatado;
+    conferirResultado = "Perdeu"
     emJogo = false;
     encerrarJogo();
   }, 2000);
@@ -124,6 +128,7 @@ function valido(nrPerguntaAtual) { // Confere se a pergunta não foi usada ainda
 //pulos
 
 function pular() {
+  numPulos++;
   tornarBotaoCinza(this); // Passa o próprio botão como argumento
 }
 
@@ -202,6 +207,7 @@ function criarCartas() {
     imgCarta.addEventListener('click', () => {
       if (cartaClicada) {
         if (imgCarta.src.endsWith("verso-carta.png")) {
+          numDicas++;
           imgCarta.src = imagens[imagemSorteada].caminho;
           botaoDicaCartas.disabled = true;
           botaoDicaCartas.style.backgroundColor = "lightgray";
@@ -269,6 +275,7 @@ const dicaConvidados = document.getElementById('mostrarDicaConvidados');
 botaoDicaConvidados.addEventListener('click', mostrarDicaConvidados);
 
 function mostrarDicaConvidados() {
+  numDicas++;
   dicaConvidados.style.display = "block";
   ajudaConvidados();
   botaoDicaConvidados.disabled = true;
@@ -380,7 +387,7 @@ botaoAbrirPublico.addEventListener('click', () => {
 
 let chutes = [0, 0, 0, 0];
 function ajudaPublico() {
-
+  numDicas++;
   chutes = [0, 0, 0, 0];
   let respostasIndividuais = coletarRespostas();
   let porcentagens = calcularPorcentagens();
@@ -459,6 +466,7 @@ botaoSim.addEventListener("click", sairJogo);
 
 function confirmaSaida() {
   premioAtual = pararFormatado; 
+  conferirResultado = "Parou";
   const fundoParar = document.getElementById("containerDireita");
   fundoParar.style.opacity = "15%";
   let dialogoSair = document.getElementById("dialogoSair");
@@ -552,7 +560,12 @@ function formataValores(acertar, parar, errar, rodada){
 
 function encerrarJogo() {
   telaFimJogo();
-
+  let dataAtual = new Date();
+  let anoAtual = dataAtual.getFullYear();
+  let mesAtual = dataAtual.getMonth()+1;
+  let diaAtual = dataAtual.getDay();
+  console.log(dataAtual.toUTCString())
+  adicionarRegistro(numDicas, numPulos, premioAtual, rodada-1, conferirResultado, atualizaTempoTela(tempoJogo), (`${diaAtual}/${mesAtual}/${anoAtual}`));
   botaoDicaCartas.style.backgroundColor = "";
   botaoDicaCartas.style.color = "";
   botaoDicaConvidados.style.backgroundColor = "";
@@ -626,7 +639,6 @@ function paraRelogio(){ // Para o ciclo do relógio e retorna o tempo de jogo em
     clearInterval(intervalo);
     return tempoJogo;
 }
-
 
 function resetarCoresPontuacao(){
   for(let i=2;i<=16;i++){
