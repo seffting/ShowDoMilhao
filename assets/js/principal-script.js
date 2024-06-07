@@ -93,8 +93,11 @@ function confereResposta() {
     if (rodada < 16) {     
       rodada++;
       comecaRodada();
+      const pegaPontuacao = document.getElementById("pontuacao"+rodada)
+      pegaPontuacao.style.color = "#cb9f2f"
     } else {
       encerrarJogo();
+
     }
   } else {
     premioAtual = errarFormatado;
@@ -548,6 +551,7 @@ function encerrarJogo() {
   botaoAbrirPublico.style.color = "";
   cartaClicada = true;
   tempoJogo = 0;
+  resetarCoresPontuacao(); 
   habilitarRespostas();
   paraRelogio();
 }
@@ -610,4 +614,12 @@ function iniciaRelogio(){ // Seta o intervalo de iteração do ciclo do relógio
 function paraRelogio(){ // Para o ciclo do relógio e retorna o tempo de jogo em milissegundos
     clearInterval(intervalo);
     return tempoJogo;
+}
+
+
+function resetarCoresPontuacao(){
+  for(let i=2;i<=16;i++){
+    let resetaCor = document.getElementById("pontuacao"+i)
+    resetaCor.style.color = "white"
+  }
 }
