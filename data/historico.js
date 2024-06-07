@@ -1,0 +1,4 @@
+let historico = [
+];
+
+export { historico };

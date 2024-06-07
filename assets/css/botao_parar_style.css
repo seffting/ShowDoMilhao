@@ -1,25 +1,65 @@
-#botaoParar {
-  border: 1px solid #d62828;
-  background-color: transparent;
-  padding: 0 2vw;
-  height: 3vh;
-  border-radius: 8px;
-  font-weight: bold;
-  font-size: 1vw;
-  color: #d62828;
-  cursor: pointer;
-}
-
-#container_botao_parar {
+#containerDialogSair {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-#dialogoSair, #dialogoSair button {
-  background-color: black;
-  border: 1px solid white;
+#dialogoSair, .botaoDialogo {
+  background-color: rgba(0, 0, 0, 0.8);
   color: white;
+}
+
+dialog {
+  padding: 10px;
+  top: 40%;
+  left: 40%;
+  width: 500px;
+  height: 150px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: none;
+}
+
+.botaoDialogo{
+  border: 1px solid white;
+  margin: 5px 10px;
+  border-radius: 10%;
+  padding: 3px 22px;
+}
+
+#tituloSair {
+  font-weight: bold;
+  font-size: 20px;
+  padding: 4px;
+}
+
+#textoDialogoSair {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+#frase1 {
+  display: flex;
+  width: 60%;
+  height: 20px;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+
+#frase1, #frase2 {
+  padding: 4px;
+  font-size: 20px;
+}
+
+#containerBotoesEscolha {
+  display: flex;
+  height: 50px;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .circulo{
@@ -33,9 +73,5 @@
 }
 
 .iconeCifrao{
-  font-size: 12px;
-}
-
-#tituloSair {
-  font-weight: bold;
+  font-size: 12px !important;
 }

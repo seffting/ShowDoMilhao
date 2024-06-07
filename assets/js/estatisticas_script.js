@@ -1,59 +1,74 @@
-// BASE DE TESTES ---------------------------------------------------
+import { historico } from "../../data/historico.js";
 
-valoresPontuacao = [0, 1000, 2000, 3000, 4000, 5000, 10000];
-const NUM_HISTORICOS = 10; // Define o número de históricos a serem gerados
-let historicos = [];
+adicionarRegistro(); // RETIRAR
 
-iniciarTeste();
-
-function iniciarTeste() {
-    localStorage.clear();
-
-    for (let i = 0; i < NUM_HISTORICOS; i++) {
-        historicos.push(gerarHistoricoAleatorio());
-    }
-
-    // Salvando no localStorage
-    localStorage.setItem("historicos", JSON.stringify(historicos));
-}
-
-function gerarHistoricoAleatorio() {
-    const dicas = aleatorio(0, 3);
-    const pulos = aleatorio(0, 3);
-    const pontuacao = valoresPontuacao[aleatorio(0, 6)];
-    const qtPerguntasRespondidas = aleatorio(0, 16);
-    const estadoPartida = aleatorio(1, 3);
-    let resultadoPartida = "";
-
-    if (estadoPartida == 1) {
-        resultadoPartida = "perdeu";
-    } else if (estadoPartida == 2) {
-        resultadoPartida = "parou";
-    } else {
-        resultadoPartida = "venceu";
-    }
-
-    const horas = aleatorio(0, 23);
-    const minutos = aleatorio(0, 59);
-    const segundos = aleatorio(0, 59);
-    const tempoPartida = horas + ":" + minutos + ":" + segundos;
-
-    return {
-        "Dicas usadas": dicas,
-        "Pulos usados": pulos,
-        "Pontuação": pontuacao,
-        "Quantidade perguntas respondidas": qtPerguntasRespondidas,
-        "Resultado da partida": resultadoPartida,
-        "Tempo da partida": tempoPartida
+function adicionarRegistro() {
+    const novoRegistro = {
+        dicasUsadas: 3,
+        pulosUsados: 2,
+        pontuacao: 500000,
+        qtPerguntasRespondidas: 15,
+        resultado: "Venceu",
+        tempoPartida: "01:12:43",
+        dataPartida: "01/01/2000"
     };
+
+    historico.push(novoRegistro);
 }
 
-function aleatorio(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+popularHistorico(); // RETIRAR
+
+function popularHistorico() {
+    historico.forEach(jogo => {
+        let dicas = jogo["dicasUsadas"];
+        let pulos = jogo["pulosUsados"];
+        let pontuacao = jogo["pontuacao"];
+        let qtPerguntasRespondidas = jogo["qtPerguntasRespondidas"];
+        let resultado = jogo["resultado"];
+        let tempoDeJogo = jogo["tempoPartida"];
+        let dataPartida = jogo["dataPartida"];
+
+        gerarHtmlHistorico(pontuacao, dataPartida, tempoDeJogo, pulos, dicas, qtPerguntasRespondidas, resultado);
+    });
+}
+
+function gerarHtmlHistorico(pontuacao, data, tempo, pulos, dicas, perguntas, resultado) {
+    let containerConteudoHistorico = document.getElementById('containerConteudoHistorico'); // Corrigido o nome da variável
+    let partidaHTML = `
+      <div class="partida">
+        <div class="containerPontuacaoDataTempo">
+          <span class="pontuacao">${pontuacao}</span>
+          <div>
+            <span class="data">${data}</span>
+            <span class="tempo">${tempo}</span>
+          </div>
+        </div>
+        <div class="direitaPartida">
+          <div class="puloPerguntaDicaResultado">
+            <div class="pulos">
+              <span>Pulos</span>
+              <span class="valoresCaixas">${pulos}</span>
+            </div>
+            <div class="dicas">
+              <span>Dicas</span>
+              <span class="valoresCaixas">${dicas}</span>
+            </div>
+            <div class="perguntas">
+              <span>Perguntas</span>
+              <span class="valoresCaixas">${perguntas}</span>
+            </div>
+            <div class="resultado">
+               <span>Resultado</span>
+                <span class="valoresCaixas" id="textoResultado">${resultado}</span>
+            </div>
+          </div>
+        </div>
+      </div>`;
+    containerConteudoHistorico.innerHTML += partidaHTML;
 }
 
 // PARTE DAS ESTATISTICAS ----------------------------------
-contarEstatisticas()
+contarEstatisticas() // RETIRAR
 /* Retorna um vetor de 8 itens {
     0 -> total de dicas
     1 -> total de pulos
@@ -65,8 +80,7 @@ contarEstatisticas()
     7 -> total de tempo jogado
 */
 function contarEstatisticas() {
-    const historicosString = localStorage.getItem("historicos");
-    const historico = JSON.parse(historicosString);
+    const historicos = historico;
     let totalDicas = 0;
     let totalPulos = 0;
     let totalPontuacao = 0;
@@ -76,28 +90,28 @@ function contarEstatisticas() {
     let totalVitorias = 0;
     let totalTempoJogado = "00:00:00";
 
-    historico.forEach((jogo) => {
-        totalDicas += jogo["Dicas usadas"];
-        totalPulos += jogo["Pulos usados"];
-        totalPontuacao += jogo["Pontuação"];
-        totalPerguntasRespondidas += jogo["Quantidade perguntas respondidas"];
+    historicos.forEach((jogo) => {
+        totalDicas += jogo["dicasUsadas"];
+        totalPulos += jogo["pulosUsados"];
+        totalPontuacao += jogo["pontuacao"];
+        totalPerguntasRespondidas += jogo["qtPerguntasRespondidas"];
         // ----- Resultado do jogo
-        let resultado = jogo["Resultado da partida"];
+        let resultado = jogo["resultado"];
         switch (resultado) {
-            case "perdeu":
+            case "Perdeu":
                 totalDerrotas++;
                 break;
-            case "parou":
+            case "Parou":
                 totalDesistencias++;
                 break;
-            case "venceu":
+            case "Venceu":
                 totalVitorias++;
                 break;
             default:
                 break;
         }
         let tempoAtual = horarioParaSegundos(totalTempoJogado)
-        let tempoDeJogo = horarioParaSegundos(jogo["Tempo da partida"]);
+        let tempoDeJogo = horarioParaSegundos(jogo["tempoPartida"]);
 
         totalTempoJogado = formatarHorario(tempoAtual + tempoDeJogo);
     });
@@ -105,12 +119,12 @@ function contarEstatisticas() {
     const estatisticas = [totalDicas, totalPulos, totalPontuacao, totalPerguntasRespondidas,
         totalDerrotas, totalDesistencias, totalVitorias, totalTempoJogado];
 
-        console.log(estatisticas)
+    console.log(estatisticas) // RETIRAR
     return estatisticas;
 
 }
 
-melhoresEstatisticas();
+melhoresEstatisticas(); // RETIRAR
 
 /* Retorna um vetor de 4 itens {
     0 -> partida mais longa
@@ -120,24 +134,23 @@ melhoresEstatisticas();
     Retornam -1 caso não tenha dados
 */
 function melhoresEstatisticas() {
-    const historicosString = localStorage.getItem("historicos");
-    const historico = JSON.parse(historicosString);
+    const historicos = historico
     let vitoriaMaisRapida = -1;
     let jogoMaisDemorado = -1;
     let menorNumeroDicas = -1;
     let menorNumeroPulos = -1;
 
-    historico.forEach((jogo) => {
-        let resultado = jogo["Resultado da partida"];
-        let tempoDeJogo = horarioParaSegundos(jogo["Tempo da partida"]);
-        let dicas = jogo["Dicas usadas"];
-        let pulos = jogo["Pulos usados"];
+    historicos.forEach((jogo) => {
+        let resultado = jogo["resultado"];
+        let tempoDeJogo = horarioParaSegundos(jogo["tempoPartida"]);
+        let dicas = jogo["dicasUsadas"];
+        let pulos = jogo["pulosUsados"];
 
-        console.log(resultado + " - " + formatarHorario(tempoDeJogo) + " | d: " + dicas + " p: " + pulos);
+        console.log(resultado + " - " + formatarHorario(tempoDeJogo) + " | d: " + dicas + " p: " + pulos); // RETIRAR
 
         jogoMaisDemorado = calcularMelhor(tempoDeJogo, jogoMaisDemorado);
         // Dados de vitórias
-        if (resultado == "venceu") {
+        if (resultado == "Venceu") {
             vitoriaMaisRapida = calcularMelhor(tempoDeJogo, vitoriaMaisRapida, true);
             menorNumeroDicas = calcularMelhor(dicas, menorNumeroDicas, true);
             menorNumeroPulos = calcularMelhor(pulos, menorNumeroPulos, true);
@@ -153,7 +166,7 @@ function melhoresEstatisticas() {
 
     const melhoresEstatisticas = [jogoMaisDemorado, vitoriaMaisRapida, menorNumeroDicas, menorNumeroPulos];
 
-    console.log(melhoresEstatisticas);
+    console.log(melhoresEstatisticas); // RETIRAR
     return melhoresEstatisticas;
 }
 

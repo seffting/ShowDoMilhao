@@ -7,8 +7,10 @@
   <link rel="stylesheet" href="../assets/css/menu_style.css">
   <link rel="stylesheet" href="../assets/css/tela_rodadas_style.css">
   <link rel="stylesheet" href="../assets/css/dicas_estilo.css">
-
+  <link rel="stylesheet" href="../assets/css/botao_parar_style.css">
+  <link rel="stylesheet" href="/assets/css/dica_publico_estilo.css">
   <link rel="shortcut icon" href="/assets/img/favicon.png" type="image/x-icon">
+  <link rel="stylesheet" href="/assets/css/fim_partida_style.css">
   <script src="../assets/js/principal-script.js" type="module" async></script>
   <title>SHOW DO MILHÃO</title>
 </head>
@@ -30,7 +32,6 @@
       </div>
     </div>
   </main>
-
 
   <!-- -----------REMOVER PLACEHOLDERS----------- -->
 
@@ -138,11 +139,22 @@
       </div>
     </div>
     <div id="containerDireita" class="displayCenter">
+      <dialog id="dialogoSair">
+        <div id="containerDailogSair">
+          <span id="tituloSair">Sair</span>
+          <div id="textoDialogoSair">
+          </div>
+          <div id="containerBotoesEscolha">
+            <button type="button" class="botaoDialogo" id="botaoSim">Sim</button>
+            <button type="button" class="botaoDialogo" id="botaoNao">Não</button>
+          </div>
+        </div>
+      </dialog>
       <div id="containerMeio">
         <!-- -----------PERGUNTAS----------- -->
         <div id="containerPerguntasEValores">
           <div id="containerCronometro">
-          <div id="relogioTempoJogo">00:00:00</div>
+            <div id="relogioTempoJogo">00:00:00</div>
           </div>
           <div id="containerPerguntas">
             <div id="pergunta" class="corFundoPerguntas displayCenter">
@@ -298,15 +310,170 @@
               <div class="buttonFecharConvidados">
                 <button id="buttonFecharConvidados">VOLTAR</button>
               </div>
-              
             </section>
-
           </div>
-
-
         </div>
     </section>
   </section>
+
+  <section id="mostrarDicasPublico">
+    <section id="dicasPublico">
+      <div class="containerPublicoExterior">
+        <div class="containerTituloPublico">
+          <div>
+            <h3>Ajuda Público</h3>
+          </div>
+        </div>
+        <div>
+          <div class="containerPublico">
+            <div id="publico">
+              <div class="convidadoResposta">
+                <img src="../assets/img/usuario1.svg" alt="">
+                <span id="convidadoResposta0">-</span>
+              </div>
+              <div class="convidadoResposta">
+                <img src="../assets/img/usuario2.png" alt="">
+                <span id="convidadoResposta1">-</span>
+              </div>
+              <div class="convidadoResposta">
+                <img src="../assets/img/usuario3.png" alt="">
+                <span id="convidadoResposta2">-</span>
+              </div>
+              <div class="convidadoResposta">
+                <img src="../assets/img/usuario1.svg" alt="">
+                <span id="convidadoResposta3">-</span>
+              </div>
+              <div class="convidadoResposta">
+                <img src="../assets/img/usuario2.png" alt="">
+                <span id="convidadoResposta4">-</span>
+              </div>
+              <div class="convidadoResposta">
+                <img src="../assets/img/usuario3.png" alt="">
+                <span id="convidadoResposta5">-</span>
+              </div>
+              <div class="convidadoResposta">
+                <img src="../assets/img/usuario1.svg" alt="">
+                <span id="convidadoResposta6">-</span>
+              </div>
+              <div class="convidadoResposta">
+                <img src="../assets/img/usuario2.png" alt="">
+                <span id="convidadoResposta7">-</span>
+              </div>
+              <div class="convidadoResposta">
+                <img src="../assets/img/usuario3.png" alt="">
+                <span id="convidadoResposta8">-</span>
+              </div>
+              <div class="convidadoResposta">
+                <img src="../assets/img/usuario1.svg" alt="">
+                <span id="convidadoResposta9">-</span>
+              </div>
+              <div class="convidadoResposta">
+                <img src="../assets/img/usuario2.png" alt="">
+                <span id="convidadoResposta10">-</span>
+              </div>
+              <div class="convidadoResposta">
+                <img src="../assets/img/usuario3.png" alt="">
+                <span id="convidadoResposta11">-</span>
+              </div>
+              <div class="convidadoResposta">
+                <img src="../assets/img/usuario1.svg" alt="">
+                <span id="convidadoResposta12">-</span>
+              </div>
+              <div class="convidadoResposta">
+                <img src="../assets/img/usuario2.png" alt="">
+                <span id="convidadoResposta13">-</span>
+              </div>
+              <div class="convidadoResposta">
+                <img src="../assets/img/usuario3.png" alt="">
+                <span id="convidadoResposta14">-</span>
+              </div>
+              <div class="convidadoResposta">
+                <img src="../assets/img/usuario1.svg" alt="">
+                <span id="convidadoResposta15">-</span>
+              </div>
+            </div>
+            <section id="barrasPublico">
+
+              <div class="cardPublico">
+                <span id="votoPublico0" class="respostaPublico">1</span>
+                <div class="progresso" id="progressoPublico0">
+                  <div class="progressoBarPublico">
+                    <span id="porcentagemPublico0"></span>
+                    <div class="progresso"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="cardPublico">
+                <span id="votoPublico1" class="respostaPublico">2</span>
+                <div class="progresso" id="progressoPublico1">
+                  <div class="progressoBarPublico">
+                    <span id="porcentagemPublico1"></span>
+                    <div class="progresso"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="cardPublico">
+                <span id="votoPublico2" class="respostaPublico">3</span>
+                <div class="progresso" id="progressoPublico2">
+                  <div class="progressoBarPublico">
+                    <span id="porcentagemPublico2"></span>
+                    <div class="progresso"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="cardPublico">
+                <span id="votoPublico2" class="respostaPublico">4</span>
+                <div class="progresso" id="progressoPublico3">
+                  <div class="progressoBarPublico">
+                    <span id="porcentagemPublico3"></span>
+                    <div class="progresso"></div>
+                  </div>
+                </div>
+              </div>
+
+            </section>
+            <div class="buttonPublico">
+              <button id="buttonFecharPublico">VOLTAR</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </section>
+
+  <div id="fimJogo">
+    <div id="telaFimPartida" class="corFundoPrincipal displayCenter">
+      <div id="conteudoFimPartida">
+        <!-- --------CONTAINER QUE MOSTRA A IMAGEM DO BONECO--------  -->
+        <div id="imagemFimPartida"></div>
+        <!-- --------CONTAINER QUE MOSTRA O RESULTADO DA PARTIDA--------  -->
+        <div id="containerResultadoPremio">
+          <div>
+            <span id="textoResultado">Você ficou com...</span>
+            <div id="containerResultado">
+              <span id="cifraoResultado">R$</span>
+              <span id="resultadoPremio">1 MILHÃO</span>
+            </div>
+          </div>
+        </div>
+        <!-- --------CONTAINER QUE MOSTRA O TEMPO E BOTAO SAIR--------  -->
+        <div id="tempoESair" class="displayCenter">
+          <div id="nSeiMaisOq">
+            <div id="tempoContainer">
+              <span>Tempo de jogo:</span>
+              <span id="tempo">00:00:00</span>
+            </div>
+            <button id="botaoSairFinalPartida">Sair</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
 
 </body>
 
