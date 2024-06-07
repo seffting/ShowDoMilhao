@@ -517,7 +517,7 @@ let perguntas = [
     escolha2: "Nikola Tesla",
     escolha3: "Albert Einstein",
     escolha4: "Stephen Hawking",
-    resposta: 4
+    resposta: 3
   },
   {
     pergunta: "Qual é o elemento químico mais abundante no universo?",
@@ -629,7 +629,7 @@ let perguntas = [
     escolha2: "18π cm",
     escolha3: "24π cm",
     escolha4: "36π cm",
-    resposta: 3
+    resposta: 1
   },
   {
     pergunta: "Se um triângulo equilátero tem um lado de 6 cm, qual é a sua área?",
@@ -644,7 +644,7 @@ let perguntas = [
     escolha1: "Transferência de arquivos segura.",
     escolha2: "Acesso remoto seguro a sistemas.",
     escolha3: "Compartilhamento de impressoras em rede.",
-    escolha4: "18√3 cm²",
+    escolha4: "Preservação de vida marinha.",
     resposta: 2
   },
   {
@@ -677,7 +677,7 @@ let perguntas = [
     escolha2: "C++",
     escolha3: "Python",
     escolha4: "SQL",
-    resposta: 1
+    resposta: 4
   },
   {
     pergunta: "Qual evento histórico marcou o início da Primeira Guerra Mundial?",

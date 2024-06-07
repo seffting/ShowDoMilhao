@@ -548,6 +548,7 @@ function encerrarJogo() {
   botaoAbrirPublico.style.color = "";
   cartaClicada = true;
   tempoJogo = 0;
+  document.getElementById("relogioTempoJogo").innerHTML = atualizaTempoTela(tempoJogo);
   habilitarRespostas();
   paraRelogio();
 }

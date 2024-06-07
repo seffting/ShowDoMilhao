@@ -1,22 +1,49 @@
 import { historico } from "../../data/historico.js";
 
-adicionarRegistro(); // RETIRAR
+window.addEventListener('load', function() {
+    // Verifica se a página atual corresponde à página desejada
+    if (window.location.href.includes('historico.html')) {
+        // Se corresponder, execute sua função
+        adicionarRegistro(0, 1, 2, 3, "Parou", "00:00:01", "07/06/2024");
+        popularHistorico();
+    }
+});
 
-function adicionarRegistro() {
-    const novoRegistro = {
-        dicasUsadas: 3,
-        pulosUsados: 2,
-        pontuacao: 500000,
-        qtPerguntasRespondidas: 15,
-        resultado: "Venceu",
-        tempoPartida: "01:12:43",
-        dataPartida: "01/01/2000"
-    };
+window.addEventListener('load', function () {
+    // Verifica se a página atual corresponde à página desejada
+    if (window.location.href.includes('estatisticas.html')) {
+        // Se corresponder, execute sua função
+        let estatisticas = contarEstatisticas();
+        let melhores = melhoresEstatisticas();
+ 
+        preencherDados(estatisticas, 0);
+        preencherDados(melhores, 8)
+    }
+});
 
-    historico.push(novoRegistro);
+function preencherDados(dados, idInicial) {
+    for (let i = 0; i < dados.length; i++) {
+        const divPai = document.getElementById(i + idInicial);
+        const novaDiv = document.createElement('div');
+        let dado = dados[i] == -1? "N/A" : dados[i];
+        novaDiv.innerHTML = dado;
+        divPai.appendChild(novaDiv);
+    }
 }
 
-popularHistorico(); // RETIRAR
+function adicionarRegistro(dicas, pulos, pts, perguntasRespondidas, resultadoFinal, tempo, data) {
+    const novoRegistro = {
+        dicasUsadas: dicas,
+        pulosUsados: pulos,
+        pontuacao: pts,
+        qtPerguntasRespondidas: perguntasRespondidas,
+        resultado: resultadoFinal,
+        tempoPartida: tempo,
+        dataPartida: data
+    };
+ 
+    historico.push(novoRegistro);
+}
 
 function popularHistorico() {
     historico.forEach(jogo => {
@@ -68,7 +95,7 @@ function gerarHtmlHistorico(pontuacao, data, tempo, pulos, dicas, perguntas, res
 }
 
 // PARTE DAS ESTATISTICAS ----------------------------------
-contarEstatisticas() // RETIRAR
+
 /* Retorna um vetor de 8 itens {
     0 -> total de dicas
     1 -> total de pulos
@@ -123,8 +150,6 @@ function contarEstatisticas() {
     return estatisticas;
 
 }
-
-melhoresEstatisticas(); // RETIRAR
 
 /* Retorna um vetor de 4 itens {
     0 -> partida mais longa
