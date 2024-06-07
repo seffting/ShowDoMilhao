@@ -525,7 +525,7 @@ let perguntas = [
     escolha2: "Hidrogênio",
     escolha3: "Carbono",
     escolha4: "Nitrogênio",
-    resposta: 2
+    resposta: 1
   },
   {
     pergunta: "Qual é o maior osso do corpo humano?",
