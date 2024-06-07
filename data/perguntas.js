@@ -644,7 +644,7 @@ let perguntas = [
     escolha1: "Transferência de arquivos segura.",
     escolha2: "Acesso remoto seguro a sistemas.",
     escolha3: "Compartilhamento de impressoras em rede.",
-    escolha4: "18√3 cm²",
+    escolha4: "Preservação de vida marinha.",
     resposta: 2
   },
   {
