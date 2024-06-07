@@ -31,7 +31,7 @@ document.getElementById("botaoJogar").addEventListener("click", function () {
   numDicas = 0;
   numPulos = 0;
   telaMenu.style.display = "none";
-  rodada = 1;
+  rodada = 15;
   telaRodadas.style.display = "";
   tempoJogo = 0;
   const audioAbertura = document.getElementById("audioAbertura");
@@ -107,6 +107,7 @@ function confereResposta() {
       pegaPontuacao.style.color = "#cb9f2f"
     } else {
       conferirResultado = "Venceu";
+      audioVenceu();
       encerrarJogo();
     }
   } else {
@@ -465,6 +466,7 @@ botaoNao.addEventListener("click", fechaDialogoSair);
 botaoSim.addEventListener("click", sairJogo);
 
 function confirmaSaida() {
+  audioParou();
   premioAtual = pararFormatado; 
   conferirResultado = "Parou";
   const fundoParar = document.getElementById("containerDireita");
@@ -676,3 +678,4 @@ function audioVenceu(){
   somVenceu.currentTime = 0;
   somVenceu.play();
 }
+
