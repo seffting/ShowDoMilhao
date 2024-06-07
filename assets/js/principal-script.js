@@ -31,7 +31,7 @@ document.getElementById("botaoJogar").addEventListener("click", function () {
   numDicas = 0;
   numPulos = 0;
   telaMenu.style.display = "none";
-  rodada = 15;
+  rodada = 1;
   telaRodadas.style.display = "";
   tempoJogo = 0;
   const audioAbertura = document.getElementById("audioAbertura");
