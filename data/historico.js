@@ -1,4 +1,8 @@
 let historico = [
 ];
 
-export { historico };
+function atualizarHistorico(novoHistorico) {
+    historico = novoHistorico;
+}
+
+export { historico, atualizarHistorico };

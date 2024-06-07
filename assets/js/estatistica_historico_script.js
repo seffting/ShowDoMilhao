@@ -1,10 +1,12 @@
 import { historico } from "../../data/historico.js";
+import { atualizarHistorico } from "../../data/historico.js";
 
 window.addEventListener('load', function() {
     // Verifica se a página atual corresponde à página desejada
     if (window.location.href.includes('/pages/historico.html')) {
         // Se corresponder, execute sua função
-        // adicionarRegistro(0, 1, 2, 3, "Parou", "00:00:01", "07/06/2024");
+
+        popularHistorico();
     }
 });
 
@@ -31,6 +33,9 @@ function preencherDados(dados, idInicial) {
 }
 
 function adicionarRegistro(dicas, pulos, pts, perguntasRespondidas, resultadoFinal, tempo, data) {
+    let historicoSalvo = JSON.parse(localStorage.getItem('historico')) || [];
+    
+    // Cria um novo registro
     const novoRegistro = {
         dicasUsadas: dicas,
         pulosUsados: pulos,
@@ -41,11 +46,15 @@ function adicionarRegistro(dicas, pulos, pts, perguntasRespondidas, resultadoFin
         dataPartida: data
     };
  
-    historico.push(novoRegistro);
+    // Adiciona o novo registro ao histórico
+    historicoSalvo.push(novoRegistro);
+    localStorage.setItem('historico', JSON.stringify(historicoSalvo));
+    atualizarHistorico(historicoSalvo);
 }
 
 function popularHistorico() {
-    historico.forEach(jogo => {
+    let jogos = JSON.parse(localStorage.getItem('historico'));
+    jogos.forEach(jogo => {
         let dicas = jogo["dicasUsadas"];
         let pulos = jogo["pulosUsados"];
         let pontuacao = jogo["pontuacao"];
