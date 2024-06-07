@@ -1,0 +1,81 @@
+/* --------CONTAINERS DE CENTRALIZAÇÃO-------- */
+#fimJogo {
+  display: none;
+}
+
+#telaFimPartida{
+    height: 100vh;
+    width: 100vw;
+}
+
+#conteudoFimPartida{
+    height: 40%;
+    width: 45%;
+    display: flex;
+}
+
+/* --------CONTAINER QUE MOSTRA TEMPO E BOTÃO SAIR-------- */
+#tempoESair{
+    width: 25%;
+    height: 100%;
+}
+
+/* --------CONTAINER QUE MOSTRA A IMAGEM DO BONECO-------- */
+
+#imagemFimPartida{
+    width: 35%;
+    height: 100%;
+    background-image: url("../img/silvio.png");
+    background-size: cover;
+    background-position: center;
+}
+
+/* --------CONTAINER QUE MOSTRA O RESULTADO DA PARTIDA-------- */
+#containerResultadoPremio{
+    width: 40%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#cifraoResultado{
+    font-weight: 400 !important;
+}
+
+#containerResultado{
+    height: 20%;
+    width: 80%;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+#textoResultado{
+    font-size: 30px;
+}
+
+#nSeiMaisOq{
+    height: 80%;
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+#botaoSairFinalPartida{
+    height: 35px;
+    width: 120px;
+    background-color: black;
+    color: white;
+    border: 2px solid white;
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+#botaoSairFinalPartida:hover{
+    background-color: #403c3c;
+}

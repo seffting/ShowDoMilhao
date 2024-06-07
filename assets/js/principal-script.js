@@ -2,16 +2,35 @@ import { perguntas } from "../../data/perguntas.js";
 
 const botaoDicaCartas = document.getElementById('botaoAjuda1');
 const botaoDicaConvidados = document.getElementById("botaoAjuda2");
-let rodada = 1;
+const botaoAbrirPublico = document.getElementById('botaoAjuda3');
+const botaoPuloUm = document.getElementById("botaoPulo1");
+const botaoPuloDois = document.getElementById("botaoPulo2");
+const botaoPuloTres = document.getElementById("botaoPulo3");
+let premioAtual;
+let acertarFormatado, pararFormatado, errarFormatado;
+
+const arrayCerteza = [];
+const arrayResposta = [];
+let rodada = null;
 let emJogo = true;
+let tempoJogo = 0; 
+let intervalo;
 
 const telaMenu = document.getElementById("containerConteudo");
 const telaRodadas = document.getElementById("secaoTelaRodadas");
 telaRodadas.style.display = "none";
 
 document.getElementById("botaoJogar").addEventListener("click", function () {
+  botaoDicaCartas.disabled = false;
+  botaoDicaConvidados.disabled = false;
+  botaoAbrirPublico.disabled = false;
+
   telaMenu.style.display = "none";
+  rodada = 1;
   telaRodadas.style.display = "";
+  tempoJogo = 0;
+  iniciaRelogio();
+  tornarBotoesHabilitado();
   comecaRodada();
 });
 
@@ -30,8 +49,9 @@ let pergunta;
 let nrsPerguntasUsadas = [];
 
 function comecaRodada() { // Placeholder de sequência da rodada
-  botaoDicaCartas.disabled = false;
-  botaoDicaConvidados.disabled = false;
+  arrayCerteza.length = 0;
+  arrayResposta.length = 0;
+
   pergunta = carregaQuestao();
   mostraElementos(pergunta);
   calculaPremio();
@@ -69,9 +89,15 @@ function confereResposta() {
   habilitarRespostas();
 
   if (acertou) {
-    rodada++;
-    comecaRodada();
+    premioAtual = acertarFormatado;
+    if (rodada < 16) {     
+      rodada++;
+      comecaRodada();
+    } else {
+      encerrarJogo();
+    }
   } else {
+    premioAtual = errarFormatado;
     emJogo = false;
     encerrarJogo();
   }
@@ -84,16 +110,7 @@ function valido(nrPerguntaAtual) { // Confere se a pergunta não foi usada ainda
 
 //pulos
 
-let pulos = 3;
-
-const botoesPulo = document.getElementById("pulos");
-
-botoesPulo.childNodes.forEach(botao => {
-  botao.addEventListener('click', pular)
-})
-
 function pular() {
-  pulos--;
   tornarBotaoCinza(this); // Passa o próprio botão como argumento
 }
 
@@ -105,10 +122,24 @@ function tornarBotaoCinza(botao) {
   comecaRodada();
 }
 
-// leitura dos 3 botões de pulo
-document.getElementById("botaoPulo1").addEventListener("click", pular);
-document.getElementById("botaoPulo2").addEventListener("click", pular);
-document.getElementById("botaoPulo3").addEventListener("click", pular);
+function tornarBotoesHabilitado(){
+
+  botaoPuloUm.disabled = false;
+  botaoPuloDois.disabled = false;
+  botaoPuloTres.disabled = false;
+
+  botaoPuloUm.addEventListener('click', pular);
+  botaoPuloDois.addEventListener('click', pular);
+  botaoPuloTres.addEventListener('click', pular);
+
+  botaoPuloUm.style.backgroundColor = "";
+  botaoPuloDois.style.backgroundColor = "";
+  botaoPuloTres.style.backgroundColor = "";
+
+  botaoPuloUm.style.color = "";
+  botaoPuloDois.style.color = "";
+  botaoPuloTres.style.color = "";
+}
 
 //Dicas --------------------------------------------------------
 
@@ -185,9 +216,6 @@ const sortearImagem = () => {
   return Math.floor(Math.random() * (max - min) + min);
 }
 
-//Armazena o valor da posição do array sorteado
-
-
 //Retorna o valor correspondente de perguntas a serem excluídas
 
 const retornaValorImagem = () => {
@@ -214,35 +242,25 @@ function removerRespostasErradas(){
 
 //Responsável por permitir fechar a tela
 const botaoFecharCartas = document.getElementById('buttonFecharCartas');
-
 botaoFecharCartas.addEventListener('click', () => {
   dicaCartas.style.display = "none";
 })
-
 
 // Dica convidados
 const rodadaFinal = 16;
 const chanceMax = 90;
 const chanceMin = 70;
 
-const arrayCerteza = [];
-const arrayResposta = [];
 const dicaConvidados = document.getElementById('mostrarDicaConvidados');
+
 botaoDicaConvidados.addEventListener('click', mostrarDicaConvidados);
 
 function mostrarDicaConvidados() {
   dicaConvidados.style.display = "block";
   ajudaConvidados();
-
   botaoDicaConvidados.disabled = true;
   botaoDicaConvidados.style.backgroundColor = "lightgray";
   botaoDicaConvidados.style.color = "gray";
-}
-
-function atualizarBarraPorcentagem() {
-  const barraPorcentagem = document.getElementById("barras");
-
-  barraPorcentagem.style.width = porcentagem + "%";
 }
 
 // ajudaConvidados();
@@ -278,7 +296,7 @@ function chuteConvidado(chanceAtual) {
 
   arrayCerteza.push(certeza);
   arrayResposta.push(resposta);
-  console.log(arrayCerteza)
+  console.log(arrayCerteza);
 }
 
 function mostrarBarraProgresso() {
@@ -338,10 +356,19 @@ botaoFecharConvidados.addEventListener('click', () => {
 
 
 //Dica do público
-function ajudaPublico() {
-  qtPessoas = 16;
-  chutes = [0, 0, 0, 0];
 
+botaoAbrirPublico.addEventListener('click', () => {
+  dicaPublico.style.display = "block";
+  botaoAbrirPublico.disabled = true;
+  botaoAbrirPublico.style.backgroundColor = "lightgray";
+  botaoAbrirPublico.style.color = "gray";
+  ajudaPublico();
+});
+
+let chutes = [0, 0, 0, 0];
+function ajudaPublico() {
+
+  chutes = [0, 0, 0, 0];
   let respostasIndividuais = coletarRespostas();
   let porcentagens = calcularPorcentagens();
 }
@@ -355,24 +382,33 @@ function coletarRespostas() {
   let respostasIndividuais = [];
 
   // Pegar chute de cada pessoa do público
-  for (let i = 0; i < qtPessoas; i++) {
+  for (let i = 0; i < 16; i++) {
       let resposta = chutePublico(chanceAtual);
       respostasIndividuais[i] = resposta;
       const indexResposta = respostas.indexOf(resposta);
       chutes[indexResposta]++;
   }
-
-  return respostasIndividuais;
+  console.log(respostasIndividuais);
+  for (let index = 0; index < respostasIndividuais.length; index++) {
+    const alocarRespostas = document.getElementById(`convidadoResposta${index}`);
+    alocarRespostas.innerHTML = respostasIndividuais[index];
+  }
 }
 
 function calcularPorcentagens() {
   let porcentagens = [0, 0, 0, 0];
 
   for (let i = 0; i < 4; i++) {
-      porcentagens[i] = Math.round(chutes[i] / qtPessoas * 100);
+      porcentagens[i] = Math.round(chutes[i] / 16 * 100);
   }
 
-  return porcentagens;
+  for (let index = 0; index < porcentagens.length; index++) {
+    const barraPorcentagem = document.getElementById(`progressoPublico${index}`);
+    const numeroPorcentagem = document.getElementById(`porcentagemPublico${index}`);
+
+    barraPorcentagem.style.width = porcentagens[index] + "%";
+    numeroPorcentagem.innerHTML = porcentagens[index] + "%";
+  }
 }
 
 function chutePublico(chanceAtual) {
@@ -394,15 +430,22 @@ function chutePublico(chanceAtual) {
   return resposta;
 }
 
+//Responsável por permitir fechar a tela
+const botaoFecharPublico = document.getElementById('buttonFecharPublico');
+const dicaPublico = document.getElementById('mostrarDicasPublico');
+botaoFecharPublico.addEventListener('click', () => {
+  dicaPublico.style.display = "none";
+})
+
+
 // Botão parar
-
-let premioAtual = "50 MIL"; // Placeholder para a pontuação atual do usuário, que ele ganha ao parar 
-
+// Placeholder para a pontuação atual do usuário, que ele ganha ao parar 
 botaoParar.addEventListener("click", confirmaSaida);
 botaoNao.addEventListener("click", fechaDialogoSair);
 botaoSim.addEventListener("click", sairJogo);
 
 function confirmaSaida() {
+  premioAtual = pararFormatado; 
   const fundoParar = document.getElementById("containerDireita");
   fundoParar.style.opacity = "15%";
   let dialogoSair = document.getElementById("dialogoSair");
@@ -421,6 +464,7 @@ function confirmaSaida() {
 
 function sairJogo () {
     fechaDialogoSair();
+    encerrarJogo();
 }
 
 function fechaDialogoSair () {
@@ -429,6 +473,13 @@ function fechaDialogoSair () {
     let dialogoSair = document.getElementById("dialogoSair");
     dialogoSair.close();
 }
+
+const botaoFinalPartida = document.getElementById('botaoSairFinalPartida');
+botaoFinalPartida.addEventListener('click', ()=> {
+  const telaFimPartida = document.getElementById("fimJogo");
+  telaFimPartida.style.display = "none";
+  telaMenu.style.display = "";
+});
 
 // -------------NECESSÁRIO PASSAR UMA VARIÁVEL "RODADA" COMO ARGUMENTO, QUE SERÁ A CONTABILIZADORA DOS NÍVEIS 1 A 16 DO JOGO.-------------
 
@@ -443,7 +494,7 @@ const valorAcertar = document.getElementById("valorAcertar");
 function calculaPremio() {// adicionar parametro para função do lucas
 
     const valoresAcertar = [1, 2, 3, 4, 5, 10, 20, 30, 40, 50, 100, 200, 300, 400, 500, 1];
-    let acertar, errar, parar, acertarFormatado, pararFormatado, errarFormatado;
+    let acertar, errar, parar;
         acertar = valoresAcertar[rodada - 1];
 
         if (rodada === 1) {
@@ -454,13 +505,13 @@ function calculaPremio() {// adicionar parametro para função do lucas
             errar = parar / 2;
         }
 
-        formataValores(acertar, parar, errar, rodada)
+        formataValores(acertar, parar, errar, rodada);
+
 }
 
 
     // -------------FUNÇÃO QUE FORMATA OS VALORES + MILHAR OU MILHÃO EM STRING-------------
 function formataValores(acertar, parar, errar, rodada){
-  let acertarFormatado, pararFormatado, errarFormatado;
 
     if(rodada === 1){
         acertarFormatado = `${acertar} MIL`
@@ -487,14 +538,18 @@ function formataValores(acertar, parar, errar, rodada){
 }
 
 function encerrarJogo() {
-  telaMenu.style.display = "";
-  telaRodadas.style.display = "none";
+  telaFimJogo();
+
   botaoDicaCartas.style.backgroundColor = "";
   botaoDicaCartas.style.color = "";
   botaoDicaConvidados.style.backgroundColor = "";
   botaoDicaConvidados.style.color = "";
+  botaoAbrirPublico.style.backgroundColor = "";
+  botaoAbrirPublico.style.color = "";
   cartaClicada = true;
+  tempoJogo = 0;
   habilitarRespostas();
+  paraRelogio();
 }
 
 function habilitarRespostas(){
@@ -507,8 +562,52 @@ function habilitarRespostas(){
   }
 }
 
-document.getElementById("botaoParar").addEventListener("click", function() {
-  // Quando o botão de parar for clicado a partida se encerra tornando a condição do loop falsa
-  emJogo = false;
-  encerrarJogo();
-});
+function telaFimJogo() {
+  const telaFimPartida = document.getElementById("fimJogo");
+  telaFimPartida.style.display = "block";
+  telaRodadas.style.display = "none";
+
+  const resultadoPremio = document.getElementById('resultadoPremio');
+  resultadoPremio.innerHTML = premioAtual;
+
+  const tempoFinal = document.getElementById('tempo');
+  tempoFinal.innerHTML = atualizaTempoTela(tempoJogo);
+}
+
+//Relógio
+function cicloRelogio() {
+    tempoJogo++;
+    document.getElementById("relogioTempoJogo").innerHTML = atualizaTempoTela(tempoJogo);
+}
+
+function atualizaTempoTela (tempo) { // Transforma o tempo de jogo em horário na tela
+
+    let horas = Math.floor(tempo/3600);
+    let minutos = Math.floor((tempo - (horas * 3600)) / 60);
+    let segundos = tempo - (horas * 3600) - (minutos * 60);
+
+    if (validoHorario(horas, minutos, segundos)){
+        horas = horas < 10 ? ("0" + horas) : horas;
+        minutos = minutos < 10 ? ("0" + minutos) : minutos;
+        segundos = segundos < 10 ? ("0" + segundos) : segundos;
+    
+        return horas+':'+minutos+':'+segundos;
+    } else {
+        paraRelogio();
+    }
+}
+
+function validoHorario (horas, minutos, segundos) { // Confere se o tempo vai até 23:59:59
+    return (horas<=23 && minutos<=59 && segundos<=59);
+}
+
+
+function iniciaRelogio(){ // Seta o intervalo de iteração do ciclo do relógio (1s)
+    intervalo = setInterval(cicloRelogio, 1000);
+}
+
+
+function paraRelogio(){ // Para o ciclo do relógio e retorna o tempo de jogo em milissegundos
+    clearInterval(intervalo);
+    return tempoJogo;
+}
