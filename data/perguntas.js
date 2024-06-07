@@ -152,7 +152,7 @@ let perguntas = [
     resposta: 2
   },
   {
-    pergunta: "Como eram chamados os reis do antigo Egito?",
+    pergunta: "Como eram chamados os líderes do antigo Egito?",
     escolha1: "Generais",
     escolha2: "Faraós",
     escolha3: "Sheiks",
@@ -160,18 +160,10 @@ let perguntas = [
     resposta: 2
   },
   {
-    pergunta: "Quem é o primo doido do Pato Donald?",
-    escolha1: "Patinhas",
-    escolha2: "Zé Carioca",
-    escolha3: "Gastão",
-    escolha4: "Peninha",
-    resposta: 4
-  },
-  {
     pergunta: "Qual o desenho animado que tem um pai de família chamado Homer?",
     escolha1: "Família Adams",
     escolha2: "Os Finstones",
-    escolha3: "Denis o Pimentinha",
+    escolha3: "Denis, o Pimentinha",
     escolha4: "Os Simpsons",
     resposta: 4
   },
@@ -280,7 +272,7 @@ let perguntas = [
     resposta: 2
   },
   {
-    pergunta: "Qual destes itens não é encontradp em uma bicicleta comum?",
+    pergunta: "Qual destes itens não é encontrado em uma bicicleta comum?",
     escolha1: "Guidão",
     escolha2: "Air Bag",
     escolha3: "Corrente",
@@ -368,7 +360,7 @@ let perguntas = [
     resposta: 2
   },
   {
-    pergunta: "Quem criou o personagem de banda desenhada Mafalda?",
+    pergunta: "Quem criou a personagem Mafalda?",
     escolha1: "Milo Manara",
     escolha2: "Maurício de Sousa",
     escolha3: "Quino",
@@ -392,15 +384,7 @@ let perguntas = [
     resposta: 2
   },
   {
-    pergunta: "Qual dos seguintes animais terrestres podem ser considerados bípedes, em zoologia?",
-    escolha1: "Homem",
-    escolha2: "Girafas",
-    escolha3: "Porcos",
-    escolha4: "Cão",
-    resposta: 1
-  },
-  {
-    pergunta: "A personagem Charlot foi criado por...",
+    pergunta: "A personagem Charlot foi criada por...",
     escolha1: "Carlos Gardel",
     escolha2: "Charlotte Brontë",
     escolha3: "Charlie Chaplin",
@@ -410,7 +394,7 @@ let perguntas = [
   {
     pergunta: "Quem foi provável assassino de John Kennedy?",
     escolha1: "Eliott Ness",
-    escolha2: "ALexander Burr",
+    escolha2: "Alexander Burr",
     escolha3: "Lee Harvey Oswald",
     escolha4: "Billy The Kid",
     resposta: 3
@@ -654,7 +638,95 @@ let perguntas = [
     escolha3: "15√3 cm²",
     escolha4: "18√3 cm²",
     resposta: 1
-    }
+  },
+  {
+    pergunta: "Qual é a principal função do protocolo SSH (Secure Shell)?",
+    escolha1: "Transferência de arquivos segura.",
+    escolha2: "Acesso remoto seguro a sistemas.",
+    escolha3: "Compartilhamento de impressoras em rede.",
+    escolha4: "18√3 cm²",
+    resposta: 2
+  },
+  {
+    pergunta: "O que é a Lei de Moore?",
+    escolha1: "A velocidade da internet dobra a cada dois anos.",
+    escolha2: "O custo dos componentes eletrônicos diminui pela metade a cada 18 meses.",
+    escolha3: "O número de transistores em um chip de computador dobra aproximadamente a cada dois anos.",
+    escolha4: "A capacidade de armazenamento de discos rígidos triplica a cada cinco anos.",
+    resposta: 3
+  },
+  {
+    pergunta: "O que significa 'VPN'?",
+    escolha1: "Virtual Private Network.",
+    escolha2: "Virtual Personal Network.",
+    escolha3: "Verified Private Network",
+    escolha4: "Verified Personal Network.",
+    resposta: 1
+  },
+  {
+    pergunta: "O que significa 'URL'?",
+    escolha1: "Uniform Resource Locator",
+    escolha2: "Universal Resource Link",
+    escolha3: "Unified Resource Locator",
+    escolha4: "Unified Resource Link.",
+    resposta: 1
+  },
+  {
+    pergunta: "Qual destas não é uma linguagem de programação orientada a objetos?",
+    escolha1: "Java",
+    escolha2: "C++",
+    escolha3: "Python",
+    escolha4: "SQL",
+    resposta: 1
+  },
+  {
+    pergunta: "Qual evento histórico marcou o início da Primeira Guerra Mundial?",
+    escolha1: "O ataque a Pearl Harbor.",
+    escolha2: "O assassinato do arquiduque Franz Ferdinand.",
+    escolha3: "A Revolução Russa.",
+    escolha4: "A assinatura do Tratado de Versalhes.",
+    resposta: 2
+  },
+  {
+    pergunta: "Quem foi o líder responsável pela unificação da Itália no século XIX?",
+    escolha1: "Otto von Bismarck.",
+    escolha2: "Giuseppe Garibaldi.",
+    escolha3: "Napoleão Bonaparte.",
+    escolha4: "Benito Mussolini.",
+    resposta: 2
+  },
+  {
+    pergunta: "Qual foi o nome dado ao período de intensa atividade cultural e científica no mundo árabe durante a Idade Média?",
+    escolha1: "Renascimento.",
+    escolha2: "Iluminismo.",
+    escolha3: "Idade das Trevas.",
+    escolha4: "Era de Ouro Islâmica.",
+    resposta: 4
+  },
+  {
+    pergunta: "Qual foi o evento que marcou o fim da Guerra Fria?",
+    escolha1: "A queda do Muro de Berlim.",
+    escolha2: "A Revolução Cubana.",
+    escolha3: "O colapso da União Soviética.",
+    escolha4: "O Acordo de Helsinque.",
+    resposta: 3
+  },
+  {
+    pergunta: "Quem foi o líder da Revolução Cubana em 1959?",
+    escolha1: "Che Guevara.",
+    escolha2: "Fidel Castro.",
+    escolha3: "Fulgencio Batista.",
+    escolha4: "Ernest Hemingway.",
+    resposta: 2
+  },
+  {
+    pergunta: "Quem foi o líder da Revolução Farroupilha, um dos maiores conflitos armados do período imperial brasileiro?",
+    escolha1: "Giuseppe Garibaldi.",
+    escolha2: "Dom Pedro II.",
+    escolha3: "Bento Gonçalves.",
+    escolha4: "Duque de Caxias.",
+    resposta: 3
+  }
 
 ];
 
