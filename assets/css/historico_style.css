@@ -24,6 +24,25 @@ main {
   height: 80vh;
 }
 
+.buttonHistorico {
+  width:  100px;
+  margin: 50px;
+  }
+  
+  #buttonFecharHistorico {
+  justify-content: center;
+  width: 10vw;
+  height: 50px;
+  background-color: transparent;
+  border: 2px solid white;
+  border-radius: 1em;
+  color: white;
+}
+
+#buttonFecharHistorico:hover, #buttonFecharConvidados:hover {
+  background-color: black;
+}
+
 #tituloHistorico{
   font-size: 5rem;
 }

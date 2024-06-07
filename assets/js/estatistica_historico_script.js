@@ -2,9 +2,9 @@ import { historico } from "../../data/historico.js";
 
 window.addEventListener('load', function() {
     // Verifica se a página atual corresponde à página desejada
-    if (window.location.href.includes('historico.html')) {
+    if (window.location.href.includes('/pages/historico.html')) {
         // Se corresponder, execute sua função
-        adicionarRegistro(0, 1, 2, 3, "Parou", "00:00:01", "07/06/2024");
+        // adicionarRegistro(0, 1, 2, 3, "Parou", "00:00:01", "07/06/2024");
         popularHistorico();
     }
 });
@@ -43,10 +43,12 @@ function adicionarRegistro(dicas, pulos, pts, perguntasRespondidas, resultadoFin
     };
  
     historico.push(novoRegistro);
+    localStorage.setItem('historico', JSON.stringify(historico));
 }
 
 function popularHistorico() {
-    historico.forEach(jogo => {
+  let jogos = JSON.parse(localStorage.getItem('historico'));
+  jogos.forEach(jogo => {
         let dicas = jogo["dicasUsadas"];
         let pulos = jogo["pulosUsados"];
         let pontuacao = jogo["pontuacao"];
@@ -229,3 +231,6 @@ function horarioParaSegundos(horario) {
     }
     return (partesHorario[0] * 60 + partesHorario[1]) * 60 + partesHorario[2];
 }
+
+
+export { adicionarRegistro } 
