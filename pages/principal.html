@@ -8,18 +8,37 @@
   <link rel="stylesheet" href="../assets/css/tela_rodadas_style.css">
   <link rel="stylesheet" href="../assets/css/dicas_estilo.css">
   <link rel="stylesheet" href="../assets/css/botao_parar_style.css">
-  <link rel="stylesheet" href="/assets/css/dica_publico_estilo.css">
+  <link rel="stylesheet" href="../assets/css/dica_publico_estilo.css">
   <link rel="shortcut icon" href="/assets/img/favicon.png" type="image/x-icon">
-  <link rel="stylesheet" href="/assets/css/fim_partida_style.css">
-
+  <link rel="stylesheet" href="../assets/css/fim_partida_style.css">
   <script src="../assets/js/principal-script.js" type="module" async></script>
   <title>SHOW DO MILHÃO</title>
 </head>
 
 <body>
+
+  <audio autoplay loop id="audioAbertura">
+    <source src="../assets/sounds/abertura.mp3" type='audio/mpeg'>
+  </audio>
+  <audio id="audioPerguntar">
+    <source src='../assets/sounds/perguntar.mp3' type='audio/mpeg'>
+  </audio>
+  <audio id="audioAcertou">
+    <source src='../assets/sounds/certa-resposta-boa.wav' type='audio/mpeg'>
+  </audio>
+  <audio id="audioErrou">
+    <source src='../assets/sounds/errou.wav' type='audio/mpeg'>
+  </audio>
+  <audio id="audioParou">
+    <source src='../assets/sounds/tem-certeza.wav' type='audio/mpeg'>
+  </audio>
+  <audio  id="audioVenceu">
+    <source src='../assets/sounds/venceu.mp3' type='audio/mpeg'>
+  </audio>
+
   <main>
     <div id="containerConteudo">
-      <img src="/assets/img/logo.png" alt="Logo Show Do Milhão" id="logoShowDoMilhao">
+      <img src="../assets/img/logo.png" alt="Logo Show Do Milhão" id="logoShowDoMilhao">
       <div id="containerMenu">
         <div>
           <button id="botaoJogar" class="botaoMenu">Jogar</button>
@@ -45,97 +64,97 @@
           <div class="circulo displayCenter">
             <span class="iconeCifrao">R$</span>
           </div>
-          <span class="textoPontuacao">1 MIL</span>
+          <span class="textoPontuacao" id="pontuacao1">1 MIL</span>
         </div>
         <div class="containerNivel">
           <div class="circulo">
             <span class="iconeCifrao">R$</span>
           </div>
-          <span class="textoPontuacao">2 MIL</span>
+          <span class="textoPontuacao" id="pontuacao2">2 MIL</span>
         </div>
         <div class="containerNivel">
           <div class="circulo">
             <span class="iconeCifrao">R$</span>
           </div>
-          <span class="textoPontuacao">3 MIL</span>
+          <span class="textoPontuacao"  id="pontuacao3">3 MIL</span>
         </div>
         <div class="containerNivel">
           <div class="circulo">
             <span class="iconeCifrao">R$</span>
           </div>
-          <span class="textoPontuacao">4 MIL</span>
+          <span class="textoPontuacao"  id="pontuacao4">4 MIL</span>
         </div>
         <div class="containerNivel">
           <div class="circulo">
             <span class="iconeCifrao">R$</span>
           </div>
-          <span class="textoPontuacao">5 MIL</span>
+          <span class="textoPontuacao"  id="pontuacao5">5 MIL</span>
         </div>
         <div class="containerNivel">
           <div class="circulo">
             <span class="iconeCifrao">R$</span>
           </div>
-          <span class="textoPontuacao">10 MIL</span>
+          <span class="textoPontuacao"  id="pontuacao6">10 MIL</span>
         </div>
         <div class="containerNivel">
           <div class="circulo">
             <span class="iconeCifrao">R$</span>
           </div>
-          <span class="textoPontuacao">20 MIL</span>
+          <span class="textoPontuacao"  id="pontuacao7">20 MIL</span>
         </div>
         <div class="containerNivel">
           <div class="circulo">
             <span class="iconeCifrao">R$</span>
           </div>
-          <span class="textoPontuacao">30 MIL</span>
+          <span class="textoPontuacao"  id="pontuacao8">30 MIL</span>
         </div>
         <div class="containerNivel">
           <div class="circulo">
             <span class="iconeCifrao">R$</span>
           </div>
-          <span class="textoPontuacao">40 MIL</span>
+          <span class="textoPontuacao"  id="pontuacao9">40 MIL</span>
         </div>
         <div class="containerNivel">
           <div class="circulo">
             <span class="iconeCifrao">R$</span>
           </div>
-          <span class="textoPontuacao">50 MIL</span>
+          <span class="textoPontuacao"  id="pontuacao10">50 MIL</span>
         </div>
         <div class="containerNivel">
           <div class="circulo">
             <span class="iconeCifrao">R$</span>
           </div>
-          <span class="textoPontuacao">100 MIL</span>
+          <span class="textoPontuacao"  id="pontuacao11">100 MIL</span>
         </div>
         <div class="containerNivel">
           <div class="circulo">
             <span class="iconeCifrao">R$</span>
           </div>
-          <span class="textoPontuacao">200 MIL</span>
+          <span class="textoPontuacao"  id="pontuacao12">200 MIL</span>
         </div>
         <div class="containerNivel">
           <div class="circulo">
             <span class="iconeCifrao">R$</span>
           </div>
-          <span class="textoPontuacao">300 MIL</span>
+          <span class="textoPontuacao"  id="pontuacao13">300 MIL</span>
         </div>
         <div class="containerNivel">
           <div class="circulo">
             <span class="iconeCifrao">R$</span>
           </div>
-          <span class="textoPontuacao">400 MIL</span>
+          <span class="textoPontuacao"  id="pontuacao14">400 MIL</span>
         </div>
         <div class="containerNivel">
           <div class="circulo">
             <span class="iconeCifrao">R$</span>
           </div>
-          <span class="textoPontuacao">500 MIL</span>
+          <span class="textoPontuacao"  id="pontuacao15">500 MIL</span>
         </div>
         <div class="containerNivel">
           <div class="circulo">
             <span class="iconeCifrao">R$</span>
           </div>
-          <span class="textoPontuacao">1 MILHÃO</span>
+          <span class="textoPontuacao"  id="pontuacao16">1 MILHÃO</span>
         </div>
       </div>
     </div>
